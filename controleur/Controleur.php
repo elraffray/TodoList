@@ -15,7 +15,6 @@ class Controleur
 
         try {
             $action = $_REQUEST['action'];
-
             switch ($action) {
 
                 //pas d'action, on r�initialise 1er appel
@@ -27,6 +26,10 @@ class Controleur
                     $this->ajoutListePublique();
                     break;
 
+                case "ajoutTachePublique":
+                    $this->ajoutTachePublique();
+                    break;
+
                 //mauvaise action
                 default:
                     $dVueEreur[] = "Erreur d'appel php";
@@ -36,11 +39,11 @@ class Controleur
 
         } catch (PDOException $e) {
             //si erreur BD, pas le cas ici
-            $dVueEreur[] = "Erreur inattendue!!! ";
+            $dVueEreur[] = $e;
             require($rep . $vues['erreur']);
 
         } catch (Exception $e2) {
-            $dVueEreur[] = "Erreur inattendue!!! ";
+            $dVueEreur[] = $e2;
             require($rep . $vues['erreur']);
         }
 
@@ -54,12 +57,17 @@ class Controleur
     {
         global $rep, $vues; // nécessaire pour utiliser variables globales
 
-        $listsPubliques[] = ListeGateway::findall();
+        $listsPubliques = ListeGateway::findall();
 
-        $id = $_GET['id'];
+
+        $id = $_REQUEST['id'];
         if (isset($id)) {
             $id = Validation::nettoyerInt($id);
             $list = ListeGateway::findById($id);
+            $taches = TacheGateway::findAllByList($id);
+            if ($taches != null) {
+                $list->setTaches($taches);
+            }
         }
         require($rep . $vues['publique']);
     }
@@ -73,6 +81,26 @@ class Controleur
 
         ListeGateway::insert($nom);
 
+        $this->accueil();
+    }
+
+
+    function ajoutTachePublique()
+    {
+        global $rep, $vues; // nécessaire pour utiliser variables globales
+
+        $nom = $_POST['nom'];
+        $nom = Validation::nettoyerString($nom);
+
+        $desc = $_POST['desc'];
+        $desc = Validation::nettoyerString($desc);
+
+
+        $idListe = $_POST['idListe'];
+        $idListe = Validation::nettoyerInt($idListe);
+
+        TacheGateway::insert($idListe, $nom, $desc);
+        echo aa;
         $this->accueil();
     }
 

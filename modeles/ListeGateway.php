@@ -24,7 +24,7 @@ class ListeGateway
 
         $query = "INSERT INTO Liste VALUES (:id, :nom)";
         $args = array(
-            ':id' => array("", PDO::PARAM_INT),
+            ':id' => array(null, PDO::PARAM_INT),
             ':nom' => array($nom, PDO::PARAM_STR),
         );
 
@@ -33,7 +33,7 @@ class ListeGateway
     }
 
 
-    public static function findall() {
+    public static function findall() : array {
         self::setConnection();
 
         self::$con->executeQuery("SELECT * FROM Liste", array());
@@ -56,7 +56,6 @@ class ListeGateway
         ));
 
         $res = self::$con->getResults();
-
         return new Liste($res[0]['id'], $res[0]['nom']);
     }
 

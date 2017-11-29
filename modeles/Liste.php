@@ -12,12 +12,20 @@ class Liste
     private $id;
     private $nom;
 
+    private $taches;
 
     public function getId() {
         return $this->id;
     }
     public function setId(int $id) {
         $this->id = $id;
+    }
+
+    public function setTaches(array $taches) {
+        $this->taches = $taches;
+    }
+    public function getTaches() : array {
+        return $this->taches;
     }
 
 

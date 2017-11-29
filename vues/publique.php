@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="../styles/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="styles/sidebar.css">
 </head>
 <body>
 
@@ -26,22 +26,20 @@
                     <a href="#">Publique</a>
                     <ul>
 
-                        <li>
-                            <a>test</a>
-                        </li>
                         <?php
-                            if (isset($listsPubliques)) {
-                                foreach ($listsPubliques as $liste) {
-                                    $href = $rep . "controleur/Controleur.php?id=$liste->id";
-                                    print "<li> <a href=\"$href\">$liste->nom</a> </li>";
+
+                        if (isset($listsPubliques)) {
+                            foreach ($listsPubliques as $liste) {
+                                    $href = "index.php?id=" . $liste->getId();
+                                    print "<li> <a href=\"$href\">" . $liste->getNom() . "</a> </li>";
                                 }
                             }
                         ?>
 
-                        <li >
+                        <li id="liAjoutListePublique">
                             <div id="ajoutListePublique">
-                                <form action="../controleur.php" method="post">
-                                    <input type="text" name="nom"/>
+                                <form action="" method="post">
+                                    <input type="text" name="nom" placeholder="Ajouter"/>
                                     <input type="submit" value="Valider" />
 
                                     <input type="hidden" name="action" value="ajoutListePublique">
@@ -73,9 +71,47 @@
             <div class="container-fluid">
                 <?php
                 if (isset($list)) {
-                    print "<h1> $list->nom </h1>";
-                }
+                print "<h1>" . $list->getNom() . "</h1>";
                 ?>
+
+                <ul class="list-group">
+
+                    <?php
+                    if (isset($taches)) {
+                        foreach ($list->getTaches() as $tache) {
+                            ?>
+                            <li class="list-group-item">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <?php
+
+                                    print "<h4 class='mb-1'>" . $tache->getNom() . "</h4>";
+                                    print "<h5 class='mb-1'>" . $tache->getDescription() . "</h5>";
+                                    print "<small>" . $tache->getDateAjout() . "</small>";
+                                    ?>
+                                </div>
+                            </li>
+                            <?php
+                        }
+                    }
+
+                    ?>
+                    <li class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <form action="" method="post" id="newTache">
+                                <input type="text" name="nom" placeholder="Tache"/>
+                                <textarea name="desc" form="newTache" placeholder="Description"></textarea>
+                                <input type="submit" value="Valider"/>
+
+                                <input type="hidden" name="action" value="ajoutTachePublique">
+                                <input type="hidden" name="idListe" value=<?php echo htmlspecialchars($list->getId()); ?>>
+                            </form>
+                        </div>
+                    </li>
+                    <?php
+                }
+                    ?>
+
+                </ul>
             </div>
 
         </div>
@@ -84,4 +120,4 @@
     </div>
 
 </body>
-</html> 
+</html>
