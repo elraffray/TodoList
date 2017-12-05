@@ -5,6 +5,8 @@
 </head>
 <body>
 <?php
+global $dVueEreur;
+
 foreach($dVueEreur as $erreur) {
     print $erreur."<br><br>";
 }

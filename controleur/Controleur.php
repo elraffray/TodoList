@@ -30,6 +30,15 @@ class Controleur
                     $this->ajoutTachePublique();
                     break;
 
+                case "supprTachePublique":
+                    $this->supprTachePublique();
+                    break;
+
+                case "completerTachePublique":
+                    $this->completerTachePublique();
+                    break;
+
+
                 //mauvaise action
                 default:
                     $dVueEreur[] = "Erreur d'appel php";
@@ -100,7 +109,37 @@ class Controleur
         $idListe = Validation::nettoyerInt($idListe);
 
         TacheGateway::insert($idListe, $nom, $desc);
-        echo aa;
+        $this->accueil();
+    }
+
+    function supprTachePublique()
+    {
+
+        $idListe = $_REQUEST['idListe'];
+        $idListe = Validation::nettoyerInt($idListe);
+
+        $idTache = $_POST['idTache'];
+
+        $idTache = Validation::nettoyerInt($idTache);
+
+        TacheGateway::supprByIdAndList($idListe, $idTache);
+
+        $_REQUEST['id'] = $idListe;
+        $this->accueil();
+    }
+
+    function completerTachePublique()
+    {
+        $idListe = $_REQUEST['idListe'];
+        $idListe = Validation::nettoyerInt($idListe);
+
+        $idTache = $_POST['idTache'];
+
+        $idTache = Validation::nettoyerInt($idTache);
+
+        TacheGateway::CompleteByIdAndList($idListe, $idTache);
+
+        $_REQUEST['id'] = $idListe;
         $this->accueil();
     }
 

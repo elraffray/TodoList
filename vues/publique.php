@@ -9,6 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="styles/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="styles/index.css">
 </head>
 <body>
 
@@ -39,9 +40,12 @@
                         <li id="liAjoutListePublique">
                             <div id="ajoutListePublique">
                                 <form action="" method="post">
-                                    <input type="text" name="nom" placeholder="Ajouter"/>
-                                    <input type="submit" value="Valider" />
-
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="nom" placeholder="Ajouter"/>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="submit">Ajouter</button>
+                                        </span>
+                                    </div>
                                     <input type="hidden" name="action" value="ajoutListePublique">
                                 </form>
                             </div>
@@ -55,7 +59,7 @@
                         <?php
                         if (isset($listsPrivees)) {
                             foreach ($listsPrivees as $liste) {
-                                print "<li> <a href=\"#\">$liste->nom</a> </li>";
+                                print "<li> <a href=\"#\">$liste->getNom()</a> </li>";
                             }
                         }
                         ?>
@@ -80,14 +84,37 @@
                     if (isset($taches)) {
                         foreach ($list->getTaches() as $tache) {
                             ?>
-                            <li class="list-group-item">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <?php
+                            <li class="list-group-item <?php if ($tache->getDateFin() != null) echo "disabled"; ?>">
+                                <div class="row tache" style="width: 100%; padding: 0">
+                                    <div class="col-sm-11">
+                                        <?php
 
-                                    print "<h4 class='mb-1'>" . $tache->getNom() . "</h4>";
-                                    print "<h5 class='mb-1'>" . $tache->getDescription() . "</h5>";
-                                    print "<small>" . $tache->getDateAjout() . "</small>";
-                                    ?>
+                                        print "<h4 class='mb-1'>" . $tache->getNom() . "</h4>";
+                                        print "<h5 class='mb-1'>" . $tache->getDescription() . "</h5>";
+                                        print "<p><small>" . $tache->getDateAjout() . "</small>";
+                                        if ($tache->getDateFin() != null) print "<small>" . "  --  " . $tache->getDateFin() . "</small>";
+                                        print "</p>";
+                                        ?>
+                                    </div>
+                                    <div class="col-sm-1 tacheAction">
+                                            <form method="post" style="width: 25px;">
+                                                <button class="tacheBtn btn btn-danger" type="submit"><span class="glyphicon glyphicon-remove"/></button>
+                                                <input type="hidden" name="action" value="supprTachePublique">
+                                                <input type="hidden" name="idListe" value=<?php echo htmlspecialchars($tache->getIdListe()) ?>>
+                                                <input type="hidden" name="idTache" value=<?php echo htmlspecialchars($tache->getId()) ?>>
+                                            </form>
+                                            <?php
+                                            if ($tache->getDateFin() == null) {
+                                                print '<form method="post" style="width: 25px">';
+                                                    print "<button class=\"tacheBtn btn btn-primary\" type=\"submit\"><span class=\"glyphicon glyphicon-ok\"/></button>";
+                                                    print "<input type=\"hidden\" name=\"action\" value=\"completerTachePublique\">";
+                                                    print "<input type=\"hidden\" name=\"idListe\" value=" . $tache->getIdListe() . ">";
+                                                    print "<input type=\"hidden\" name=\"idTache\" value=" . $tache->getId() . ">";
+                                                print "</form>";
+                                            }
+                                            ?>
+                                    </div>
+                                    </div>
                                 </div>
                             </li>
                             <?php
@@ -103,7 +130,7 @@
                                 <input type="submit" value="Valider"/>
 
                                 <input type="hidden" name="action" value="ajoutTachePublique">
-                                <input type="hidden" name="idListe" value=<?php echo htmlspecialchars($list->getId()); ?>>
+                                <input type="hidden" name="idListe" value=<?php echo htmlspecialchars($list->getId()) ?>>
                             </form>
                         </div>
                     </li>

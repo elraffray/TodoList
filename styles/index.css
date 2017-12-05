@@ -1,0 +1,29 @@
+.tache {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+
+.tache > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.tacheBtn {
+    width: 25px !important;
+    height: 25px !important;
+    padding: 0px;
+}
+
+
+.tacheAction {
+    justify-content: space-around;
+    align-items: end;
+    margin: 0;
+    padding: 0;
+}
+
+
+

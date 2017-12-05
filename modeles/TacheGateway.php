@@ -20,14 +20,14 @@ class TacheGateway
 
 
     public static function insert(int $idListe, string $nom, string $description) {
+        self::setConnection();
 
-        $query = "INSERT INTO Tache VALUES (:id, :idListe, :nom, :description, :dateAjout, :dateFin)";
+        $query = "INSERT INTO Tache VALUES (:id, :idListe, :nom, :description, now(), :dateFin)";
         $args = array(
             ':id' => array(NULL, PDO::PARAM_INT),
             ':idListe' => array($idListe, PDO::PARAM_INT),
             ':nom' => array($nom, PDO::PARAM_STR),
             ':description' => array($description, PDO::PARAM_STR),
-            ':dateAjout' => array(date("d-m-Y h:i:s"), PDO::PARAM_STR),
             ':dateFin' => array(NULL, PDO::PARAM_STR)
         );
 
@@ -38,7 +38,6 @@ class TacheGateway
             var_dump($e->getMessage());
         }
 
-        echo aaa;
 
 
     }
@@ -46,18 +45,55 @@ class TacheGateway
 
     public static function findAllByList(int $idListe) {
         self::setConnection();
+        try {
+            self::$con->executeQuery("SELECT * FROM Tache where idListe=:idListe", array(
+                ':idListe' => array($idListe, PDO::PARAM_INT),
+            ));
 
+            $res = self::$con->getResults();
+        } catch (PDOException $e) {
+            var_dump($e);
+        }
 
-        self::$con->executeQuery("SELECT * FROM Tache where idListe=:idListe",  array(
-            ':idListe' => array($idListe, PDO::PARAM_INT),
-        ));
-
-        $res = self::$con->getResults();
-
-        foreach ($res as $row) {
-            $taches[] = new Tache($row['id'], $row['idListe'], $row['nom'], $row['description'], $row['dateAjout']);
+        try {
+            foreach ($res as $row) {
+                $taches[] = new Tache($row['id'], $row['idListe'], $row['nom'], $row['description'], $row['dateAjout']);
+                if ($row['dateFin'] != null) $taches[count($taches)-1]->setDateFin($row['dateFin']);
+            }
+        } catch (Exception $e) {
+            var_dump($e);
         }
         return $taches;
     }
+
+    public static function supprByIdAndList(int $idListe, int $idTache) {
+        self::setConnection();
+
+        try {
+            self::$con->executeQuery("delete from Tache where id=:id and idListe=:idListe", array(
+                ':id' => array($idTache, PDO::PARAM_INT),
+                ':idListe' => array($idListe, PDO::PARAM_INT),
+            ));
+        } catch(Exception $e) {
+            echo 'Exception -> ';
+            var_dump($e->getMessage());
+        }
+    }
+
+    public static function CompleteByIdAndList($idListe, $idTache)
+    {
+        self::setConnection();
+
+        try {
+            self::$con->executeQuery("update Tache set dateFin=now() where id=:id and idListe=:idListe", array(
+                ':id' => array($idTache, PDO::PARAM_INT),
+                ':idListe' => array($idListe, PDO::PARAM_INT),
+            ));
+        } catch(Exception $e) {
+            echo 'Exception -> ';
+            var_dump($e->getMessage());
+        }
+    }
+
 
 }
