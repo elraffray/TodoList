@@ -26,21 +26,21 @@ class Controleur
                     $this->ajoutListePublique();
                     break;
 
-                case "ajoutTachePublique":
-                    $this->ajoutTachePublique();
+                case "ajoutTache":
+                    $this->ajoutTache();
                     break;
 
-                case "supprListePublique":
-                    $this->supprListePublique();
+                case "supprListe":
+                    $this->supprListe();
                     break;
 
-                case "supprTachePublique":
-                    $this->supprTachePublique();
+                case "supprTache":
+                    $this->supprTache();
                     break;
 
 
-                case "completerTachePublique":
-                    $this->completerTachePublique();
+                case "completerTache":
+                    $this->completerTache();
                     break;
 
 
@@ -70,9 +70,7 @@ class Controleur
     function accueil()
     {
         global $rep, $vues; // nécessaire pour utiliser variables globales
-
-        $listsPubliques = ListeGateway::findall();
-
+            $listsPubliques = ListeGateway::findAllPublique();
 
         $id = $_REQUEST['id'];
         if (isset($id)) {
@@ -99,7 +97,7 @@ class Controleur
     }
 
 
-    function ajoutTachePublique()
+    function ajoutTache()
     {
         global $rep, $vues; // nécessaire pour utiliser variables globales
 
@@ -118,7 +116,7 @@ class Controleur
     }
 
 
-    function supprListePublique() {
+    function supprListe() {
         $idListe = $_REQUEST['idListe'];
         $idListe = Validation::nettoyerInt($idListe);
 
@@ -133,7 +131,7 @@ class Controleur
     }
 
 
-    function supprTachePublique()
+    function supprTache()
     {
 
         $idListe = $_REQUEST['idListe'];
@@ -149,7 +147,7 @@ class Controleur
         $this->accueil();
     }
 
-    function completerTachePublique()
+    function completerTache()
     {
         $idListe = $_REQUEST['idListe'];
         $idListe = Validation::nettoyerInt($idListe);

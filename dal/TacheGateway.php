@@ -22,6 +22,9 @@ class TacheGateway
     public static function insert(int $idListe, string $nom, string $description) {
         self::setConnection();
 
+
+        if ($nom == "") return;
+
         $query = "INSERT INTO Tache VALUES (:id, :idListe, :nom, :description, now(), :dateFin)";
         $args = array(
             ':id' => array(NULL, PDO::PARAM_INT),
@@ -46,7 +49,7 @@ class TacheGateway
     public static function findAllByList(int $idListe) {
         self::setConnection();
         try {
-            self::$con->executeQuery("SELECT * FROM Tache where idListe=:idListe", array(
+            self::$con->executeQuery("SELECT * FROM Tache where idListe=:idListe order by dateFin, dateAjout desc", array(
                 ':idListe' => array($idListe, PDO::PARAM_INT),
             ));
 
@@ -79,6 +82,21 @@ class TacheGateway
             var_dump($e->getMessage());
         }
     }
+
+    public static function supprByList(int $idListe) {
+        self::setConnection();
+
+        try {
+            self::$con->executeQuery("delete from Tache where idListe=:idListe", array(
+                ':idListe' => array($idListe, PDO::PARAM_INT),
+            ));
+        } catch(Exception $e) {
+            echo 'Exception -> ';
+            var_dump($e->getMessage());
+        }
+    }
+
+
 
     public static function CompleteByIdAndList($idListe, $idTache)
     {

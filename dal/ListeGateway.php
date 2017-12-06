@@ -18,14 +18,16 @@ class ListeGateway
 
 
 
-    public static function insert(string $nom) {
+    public static function insert(string $nom, string $username=null) {
         self::setConnection();
 
+        if ($nom == "") return;
 
-        $query = "INSERT INTO Liste VALUES (:id, :nom)";
+        $query = "INSERT INTO Liste VALUES (:id, :nom, :username)";
         $args = array(
             ':id' => array(null, PDO::PARAM_INT),
             ':nom' => array($nom, PDO::PARAM_STR),
+            ':username' => array($username, PDO::PARAM_STR)
         );
 
 
@@ -33,10 +35,10 @@ class ListeGateway
     }
 
 
-    public static function findall() : array {
+    public static function findAllPublique() : array {
         self::setConnection();
 
-        self::$con->executeQuery("SELECT * FROM Liste", array());
+        self::$con->executeQuery("SELECT * FROM Liste where username IS NULL", array());
 
         $res = self::$con->getResults();
 
@@ -46,6 +48,24 @@ class ListeGateway
 
         return $lists;
     }
+
+
+    public static function findByUser(string $username) : array {
+        self::setConnection();
+
+        self::$con->executeQuery("SELECT * FROM Liste where username=:username", array(
+            ':username' => array($username, PDO::PARAM_STR)
+        ));
+
+        $res = self::$con->getResults();
+
+        foreach ($res as $row) {
+            $lists[] = new Liste($row['id'], $row['nom']);
+        }
+
+        return $lists;
+    }
+
 
     public static function findById(int $id) {
         self::setConnection();
@@ -64,6 +84,9 @@ class ListeGateway
         self::setConnection();
 
         try {
+
+            TacheGateway::supprByList($id);
+
             self::$con->executeQuery("DELETE FROM Liste where id=:id", array(
                 ':id' => array($id, PDO::PARAM_INT),
             ));

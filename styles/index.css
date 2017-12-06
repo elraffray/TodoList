@@ -26,7 +26,12 @@
 }
 
 #taches .list-group-item {
-    background-color: #dddddd;
+    background-color: #eeeeee;
+    border-color: #bbbbbb;
+}
+
+#taches .disabled {
+    background-color: #bbbbbb !important;
     border-color: #bbbbbb;
 }
 
