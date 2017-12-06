@@ -30,9 +30,14 @@ class Controleur
                     $this->ajoutTachePublique();
                     break;
 
+                case "supprListePublique":
+                    $this->supprListePublique();
+                    break;
+
                 case "supprTachePublique":
                     $this->supprTachePublique();
                     break;
+
 
                 case "completerTachePublique":
                     $this->completerTachePublique();
@@ -111,6 +116,22 @@ class Controleur
         TacheGateway::insert($idListe, $nom, $desc);
         $this->accueil();
     }
+
+
+    function supprListePublique() {
+        $idListe = $_REQUEST['idListe'];
+        $idListe = Validation::nettoyerInt($idListe);
+
+        $id = $_REQUEST['id'];
+        $id = Validation::nettoyerInt($id);
+
+        if ($id == $idListe)
+            $_REQUEST['id'] = null;
+
+        ListeGateway::supprById($idListe);
+        $this->accueil();
+    }
+
 
     function supprTachePublique()
     {

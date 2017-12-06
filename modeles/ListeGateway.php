@@ -59,4 +59,17 @@ class ListeGateway
         return new Liste($res[0]['id'], $res[0]['nom']);
     }
 
+
+    public static function supprById(int $id) {
+        self::setConnection();
+
+        try {
+            self::$con->executeQuery("DELETE FROM Liste where id=:id", array(
+                ':id' => array($id, PDO::PARAM_INT),
+            ));
+        } catch(PDOException $e) {
+            var_dump($e);
+        }
+    }
+
 }

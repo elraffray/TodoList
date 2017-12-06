@@ -25,5 +25,9 @@
     padding: 0;
 }
 
+#taches .list-group-item {
+    background-color: #dddddd;
+    border-color: #bbbbbb;
+}
 
 

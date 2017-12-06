@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b13eb7b-5f2e-4102-8eb6-2d7de6164484" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/styles/index.css" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/config/config.php" afterPath="$PROJECT_DIR$/config/config.php" />
       <change beforePath="$PROJECT_DIR$/controleur/Controleur.php" afterPath="$PROJECT_DIR$/controleur/Controleur.php" />
-      <change beforePath="$PROJECT_DIR$/modeles/TacheGateway.php" afterPath="$PROJECT_DIR$/modeles/TacheGateway.php" />
+      <change beforePath="$PROJECT_DIR$/modeles/ListeGateway.php" afterPath="$PROJECT_DIR$/modeles/ListeGateway.php" />
+      <change beforePath="$PROJECT_DIR$/styles/index.css" afterPath="$PROJECT_DIR$/styles/index.css" />
       <change beforePath="$PROJECT_DIR$/styles/sidebar.css" afterPath="$PROJECT_DIR$/styles/sidebar.css" />
-      <change beforePath="$PROJECT_DIR$/vues/erreur.php" afterPath="$PROJECT_DIR$/vues/erreur.php" />
       <change beforePath="$PROJECT_DIR$/vues/publique.php" afterPath="$PROJECT_DIR$/vues/publique.php" />
     </list>
     <ignored path="TodoList.iws" />
@@ -29,31 +27,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="publique.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="publique.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vues/publique.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="115" column="39" lean-forward="true" selection-start-line="115" selection-start-column="39" selection-end-line="115" selection-end-column="39" />
+            <state relative-caret-position="306">
+              <caret line="91" column="49" lean-forward="false" selection-start-line="91" selection-start-column="49" selection-end-line="91" selection-end-column="49" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1512495578975" expanded="true" signature="2308:2337" ph="..." />
-                <marker date="1512495578975" expanded="true" signature="5121:5132" ph="..." />
-                <marker date="1512495578975" expanded="true" signature="5133:7096" ph="..." />
-                <marker date="1512495578975" expanded="true" signature="6180:6902" ph="..." />
-                <marker date="1512495578975" expanded="true" signature="6255:6876" ph="..." />
-                <marker date="1512495578975" expanded="true" signature="6328:6845" ph="..." />
+                <marker date="1512561320694" expanded="true" signature="1339:1388" ph="..." />
+                <marker date="1512561320694" expanded="true" signature="1339:1410" ph="..." />
+                <marker date="1512561320694" expanded="true" signature="3212:3241" ph="..." />
+                <marker date="1512561320694" expanded="true" signature="6037:6048" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/styles/index.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -61,8 +45,18 @@
       <file leaf-file-name="sidebar.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/styles/sidebar.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="427">
+              <caret line="130" column="8" lean-forward="false" selection-start-line="130" selection-start-column="8" selection-end-line="130" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/styles/index.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="472">
+              <caret line="29" column="25" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -72,7 +66,7 @@
         <entry file="file://$PROJECT_DIR$/modeles/Tache.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="663">
-              <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+              <caret line="44" column="5" lean-forward="false" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -82,7 +76,7 @@
         <entry file="file://$PROJECT_DIR$/modeles/TacheGateway.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1037">
-              <caret line="61" column="13" lean-forward="true" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
+              <caret line="61" column="13" lean-forward="false" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
               <folding>
                 <marker date="1512490712171" expanded="true" signature="423:500" ph="INSERT INTO Tache... " />
                 <marker date="1512490712171" expanded="true" signature="1153:1190" ph="SELECT * FRO... Liste" />
@@ -118,12 +112,14 @@
       <file leaf-file-name="ListeGateway.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modeles/ListeGateway.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+            <state relative-caret-position="404">
+              <caret line="63" column="30" lean-forward="true" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
               <folding>
-                <marker date="1511978597637" expanded="true" signature="388:424" ph="INSERT INTO Liste... " />
-                <marker date="1511978597637" expanded="true" signature="734:753" ph="SELECT * FRO... Liste" />
-                <marker date="1511978597637" expanded="true" signature="1056:1088" ph="SELECT * FRO... Liste" />
+                <marker date="1512560440130" expanded="true" signature="388:424" ph="INSERT INTO Liste... " />
+                <marker date="1512560440130" expanded="true" signature="734:753" ph="SELECT * FRO... Liste" />
+                <marker date="1512560440130" expanded="true" signature="1056:1088" ph="SELECT * FRO... Liste" />
+                <marker date="1512560440130" expanded="true" signature="1399:1429" ph="DELETE FROM Liste... " />
+                <marker date="1512560440130" expanded="true" signature="1405:1429" ph="SELECT * FRO... Liste" />
               </folding>
             </state>
           </provider>
@@ -132,8 +128,8 @@
       <file leaf-file-name="Controleur.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controleur/Controleur.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="16" column="42" lean-forward="true" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+            <state relative-caret-position="357">
+              <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -168,15 +164,15 @@
         <option value="$PROJECT_DIR$/Validation.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/config/config.php" />
-        <option value="$PROJECT_DIR$/modeles/ListeGateway.php" />
         <option value="$PROJECT_DIR$/modeles/Liste.php" />
         <option value="$PROJECT_DIR$/vues/erreur.php" />
-        <option value="$PROJECT_DIR$/controleur/Controleur.php" />
         <option value="$PROJECT_DIR$/modeles/Tache.php" />
         <option value="$PROJECT_DIR$/modeles/TacheGateway.php" />
-        <option value="$PROJECT_DIR$/styles/index.css" />
-        <option value="$PROJECT_DIR$/styles/sidebar.css" />
+        <option value="$PROJECT_DIR$/modeles/ListeGateway.php" />
+        <option value="$PROJECT_DIR$/controleur/Controleur.php" />
         <option value="$PROJECT_DIR$/vues/publique.php" />
+        <option value="$PROJECT_DIR$/styles/sidebar.css" />
+        <option value="$PROJECT_DIR$/styles/index.css" />
       </list>
     </option>
   </component>
@@ -346,16 +342,18 @@
       <workItem from="1511975494093" duration="11227000" />
       <workItem from="1512484463324" duration="7086000" />
       <workItem from="1512492164446" duration="3571000" />
+      <workItem from="1512554767974" duration="2599000" />
+      <workItem from="1512558764401" duration="3631000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34683000" />
+    <option name="totallyTimeSpent" value="40913000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="7" y="-9" width="1352" height="770" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17284867" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08456973" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -432,9 +430,11 @@
         <state relative-caret-position="459">
           <caret line="27" column="2" lean-forward="false" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
           <folding>
-            <marker date="1511978597637" expanded="true" signature="388:424" ph="INSERT INTO Liste... " />
-            <marker date="1511978597637" expanded="true" signature="734:753" ph="SELECT * FRO... Liste" />
-            <marker date="1511978597637" expanded="true" signature="1056:1088" ph="SELECT * FRO... Liste" />
+            <marker date="1512560440130" expanded="true" signature="388:424" ph="INSERT INTO Liste... " />
+            <marker date="1512560440130" expanded="true" signature="734:753" ph="SELECT * FRO... Liste" />
+            <marker date="1512560440130" expanded="true" signature="1056:1088" ph="SELECT * FRO... Liste" />
+            <marker date="1512560440130" expanded="true" signature="1399:1429" ph="DELETE FROM Liste... " />
+            <marker date="1512560440130" expanded="true" signature="1405:1429" ph="SELECT * FRO... Liste" />
           </folding>
         </state>
       </provider>
@@ -460,14 +460,10 @@
         <state relative-caret-position="527">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1512495578975" expanded="true" signature="2308:2337" ph="..." />
-            <marker date="1512495578975" expanded="true" signature="5121:5132" ph="..." />
-            <marker date="1512495578975" expanded="true" signature="5133:7096" ph="..." />
-            <marker date="1512495578975" expanded="true" signature="6180:6902" ph="..." />
-            <marker date="1512495578975" expanded="true" signature="6255:6876" ph="..." />
-            <marker date="1512495578975" expanded="true" signature="6328:6845" ph="..." />
+            <marker date="1512561320694" expanded="true" signature="1339:1388" ph="..." />
+            <marker date="1512561320694" expanded="true" signature="1339:1410" ph="..." />
+            <marker date="1512561320694" expanded="true" signature="3212:3241" ph="..." />
+            <marker date="1512561320694" expanded="true" signature="6037:6048" ph="..." />
           </folding>
         </state>
       </provider>
@@ -506,7 +502,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -515,9 +510,11 @@
         <state relative-caret-position="731">
           <caret line="43" column="53" lean-forward="true" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="53" />
           <folding>
-            <marker date="1511978597637" expanded="true" signature="388:424" ph="INSERT INTO Liste... " />
-            <marker date="1511978597637" expanded="true" signature="734:753" ph="SELECT * FRO... Liste" />
-            <marker date="1511978597637" expanded="true" signature="1056:1088" ph="SELECT * FRO... Liste" />
+            <marker date="1512560440130" expanded="true" signature="388:424" ph="INSERT INTO Liste... " />
+            <marker date="1512560440130" expanded="true" signature="734:753" ph="SELECT * FRO... Liste" />
+            <marker date="1512560440130" expanded="true" signature="1056:1088" ph="SELECT * FRO... Liste" />
+            <marker date="1512560440130" expanded="true" signature="1399:1429" ph="DELETE FROM Liste... " />
+            <marker date="1512560440130" expanded="true" signature="1405:1429" ph="SELECT * FRO... Liste" />
           </folding>
         </state>
       </provider>
@@ -557,9 +554,11 @@
         <state relative-caret-position="731">
           <caret line="43" column="32" lean-forward="false" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="32" />
           <folding>
-            <marker date="1511978597637" expanded="true" signature="388:424" ph="INSERT INTO Liste... " />
-            <marker date="1511978597637" expanded="true" signature="734:753" ph="SELECT * FRO... Liste" />
-            <marker date="1511978597637" expanded="true" signature="1056:1088" ph="SELECT * FRO... Liste" />
+            <marker date="1512560440130" expanded="true" signature="388:424" ph="INSERT INTO Liste... " />
+            <marker date="1512560440130" expanded="true" signature="734:753" ph="SELECT * FRO... Liste" />
+            <marker date="1512560440130" expanded="true" signature="1056:1088" ph="SELECT * FRO... Liste" />
+            <marker date="1512560440130" expanded="true" signature="1399:1429" ph="DELETE FROM Liste... " />
+            <marker date="1512560440130" expanded="true" signature="1405:1429" ph="SELECT * FRO... Liste" />
           </folding>
         </state>
       </provider>
@@ -590,7 +589,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="2" lean-forward="false" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -599,14 +597,10 @@
         <state relative-caret-position="544">
           <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="24" selection-end-line="38" selection-end-column="26" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1512495578975" expanded="true" signature="2308:2337" ph="..." />
-            <marker date="1512495578975" expanded="true" signature="5121:5132" ph="..." />
-            <marker date="1512495578975" expanded="true" signature="5133:7096" ph="..." />
-            <marker date="1512495578975" expanded="true" signature="6180:6902" ph="..." />
-            <marker date="1512495578975" expanded="true" signature="6255:6876" ph="..." />
-            <marker date="1512495578975" expanded="true" signature="6328:6845" ph="..." />
+            <marker date="1512561320694" expanded="true" signature="1339:1388" ph="..." />
+            <marker date="1512561320694" expanded="true" signature="1339:1410" ph="..." />
+            <marker date="1512561320694" expanded="true" signature="3212:3241" ph="..." />
+            <marker date="1512561320694" expanded="true" signature="6037:6048" ph="..." />
           </folding>
         </state>
       </provider>
@@ -645,9 +639,11 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1511978597637" expanded="true" signature="388:424" ph="INSERT INTO Liste... " />
-            <marker date="1511978597637" expanded="true" signature="734:753" ph="SELECT * FRO... Liste" />
-            <marker date="1511978597637" expanded="true" signature="1056:1088" ph="SELECT * FRO... Liste" />
+            <marker date="1512560440130" expanded="true" signature="388:424" ph="INSERT INTO Liste... " />
+            <marker date="1512560440130" expanded="true" signature="734:753" ph="SELECT * FRO... Liste" />
+            <marker date="1512560440130" expanded="true" signature="1056:1088" ph="SELECT * FRO... Liste" />
+            <marker date="1512560440130" expanded="true" signature="1399:1429" ph="DELETE FROM Liste... " />
+            <marker date="1512560440130" expanded="true" signature="1405:1429" ph="SELECT * FRO... Liste" />
           </folding>
         </state>
       </provider>
@@ -664,7 +660,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="3" column="5" lean-forward="false" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -762,22 +757,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modeles/ListeGateway.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
-          <folding>
-            <marker date="1511978597637" expanded="true" signature="388:424" ph="INSERT INTO Liste... " />
-            <marker date="1511978597637" expanded="true" signature="734:753" ph="SELECT * FRO... Liste" />
-            <marker date="1511978597637" expanded="true" signature="1056:1088" ph="SELECT * FRO... Liste" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modeles/Tache.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
-          <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+          <caret line="44" column="5" lean-forward="false" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -785,7 +768,7 @@
     <entry file="file://$PROJECT_DIR$/modeles/TacheGateway.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1037">
-          <caret line="61" column="13" lean-forward="true" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
+          <caret line="61" column="13" lean-forward="false" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
           <folding>
             <marker date="1512490712171" expanded="true" signature="423:500" ph="INSERT INTO Tache... " />
             <marker date="1512490712171" expanded="true" signature="1153:1190" ph="SELECT * FRO... Liste" />
@@ -797,52 +780,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controleur/Controleur.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="16" column="42" lean-forward="true" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="38" lean-forward="false" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/styles/index.css">
+    <entry file="file://$PROJECT_DIR$/modeles/ListeGateway.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="404">
+          <caret line="63" column="30" lean-forward="true" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
+          <folding>
+            <marker date="1512560440130" expanded="true" signature="388:424" ph="INSERT INTO Liste... " />
+            <marker date="1512560440130" expanded="true" signature="734:753" ph="SELECT * FRO... Liste" />
+            <marker date="1512560440130" expanded="true" signature="1056:1088" ph="SELECT * FRO... Liste" />
+            <marker date="1512560440130" expanded="true" signature="1399:1429" ph="DELETE FROM Liste... " />
+            <marker date="1512560440130" expanded="true" signature="1405:1429" ph="SELECT * FRO... Liste" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/styles/sidebar.css">
+    <entry file="file://$PROJECT_DIR$/controleur/Controleur.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="357">
+          <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vues/publique.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="115" column="39" lean-forward="true" selection-start-line="115" selection-start-column="39" selection-end-line="115" selection-end-column="39" />
+        <state relative-caret-position="306">
+          <caret line="91" column="49" lean-forward="false" selection-start-line="91" selection-start-column="49" selection-end-line="91" selection-end-column="49" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1512495578975" expanded="true" signature="2308:2337" ph="..." />
-            <marker date="1512495578975" expanded="true" signature="5121:5132" ph="..." />
-            <marker date="1512495578975" expanded="true" signature="5133:7096" ph="..." />
-            <marker date="1512495578975" expanded="true" signature="6180:6902" ph="..." />
-            <marker date="1512495578975" expanded="true" signature="6255:6876" ph="..." />
-            <marker date="1512495578975" expanded="true" signature="6328:6845" ph="..." />
+            <marker date="1512561320694" expanded="true" signature="1339:1388" ph="..." />
+            <marker date="1512561320694" expanded="true" signature="1339:1410" ph="..." />
+            <marker date="1512561320694" expanded="true" signature="3212:3241" ph="..." />
+            <marker date="1512561320694" expanded="true" signature="6037:6048" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles/sidebar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="130" column="8" lean-forward="false" selection-start-line="130" selection-start-column="8" selection-end-line="130" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="29" column="25" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>

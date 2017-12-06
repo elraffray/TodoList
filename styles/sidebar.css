@@ -37,6 +37,8 @@ body {
   padding: 15px;
   margin-left: 250px;
   margin-right: -250px;
+  background: #fff;
+  height: 100vh;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -59,12 +61,14 @@ body {
 .sidebar-nav li {
   text-indent: 20px;
   line-height: 40px;
+  color: #efc3f5;
+
 }
 
 .sidebar-nav li a {
   display: block;
   text-decoration: none;
-  color: #999999;
+;
 }
 
 .sidebar-nav li a:hover {
@@ -84,11 +88,10 @@ body {
 }
 
 .sidebar-nav>.sidebar-brand a {
-  color: #999999;
+  color: #aaaaaa;
 }
 
 .sidebar-nav>.sidebar-brand a:hover {
-  color: #fff;
   background: none;
 }
 
@@ -122,32 +125,44 @@ body {
 
 .sidebar-nav > li > a{
   font-weight: bold;
+  color: #aaaaaa;
+}
+
+.liste p{
+  color: #aaaaaa;
 }
 
 #liAjoutListePublique {
-  height: 40px;
+  text-indent: 0px !important;
+  line-height: normal !important;
+  padding-right: 15px;
+  margin-left: 15px;
 }
 
 
-#ajoutListePublique {
-  height: 100%;
-
+.liste {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  padding-right: 15px;
 }
 
-#ajoutListePublique input {
+.liste p {
   margin: 0;
-  padding: 5;
-  border: 0;
-  line-height: 20px;
 }
 
-#ajoutListePublique input[type=text] {
-  margin: 0;
-  padding: 0;
-  border: 0;
 
-  width: 50%;
-  line-height: 20px;
+.liste .btn {
+  width: 20px !important;
+  height: 20px !important;
+  padding: 0px;
+}
+
+
+.listeA .supprListePublique {
+  display: none;
+}
+
+.listeA:hover .supprListePublique {
+  display: block;
 }
