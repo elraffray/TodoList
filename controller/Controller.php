@@ -1,6 +1,6 @@
 <?php
 
-class Controleur
+class Controller
 {
 
     function __construct()
@@ -11,6 +11,8 @@ class Controleur
         //debut
 
         //on initialise un tableau d'erreur
+        global $dVueEreur;
+
         $dVueEreur = array();
 
         try {
@@ -19,30 +21,38 @@ class Controleur
 
                 //pas d'action, on r�initialise 1er appel
                 case NULL:
+
                     $this->accueil();
+                    break;
+
+                case "connexion":
+                    $this->connexion();
                     break;
 
                 case "ajoutListePublique":
                     $this->ajoutListePublique();
                     break;
 
-                case "ajoutTache":
+                case "ajoutTachePublique":
                     $this->ajoutTache();
                     break;
 
-                case "supprListe":
+                case "supprListePublique":
                     $this->supprListe();
                     break;
 
-                case "supprTache":
+                case "supprTachePublique":
                     $this->supprTache();
                     break;
 
 
-                case "completerTache":
+                case "completerTachePublique":
                     $this->completerTache();
                     break;
 
+                case "seConnecter":
+                    $this->seConnecter();
+                    break;
 
                 //mauvaise action
                 default:
@@ -70,7 +80,14 @@ class Controleur
     function accueil()
     {
         global $rep, $vues; // nécessaire pour utiliser variables globales
-            $listsPubliques = ListeGateway::findAllPublique();
+        $listsPubliques = ListeGateway::findAllPublique();
+
+        $mdl = new ModeleUser();
+        if ($mdl->isUser()) {
+            $listsPrivees = ListeGateway::findByUser($_SESSION['username']);
+        }
+        else
+            unset($listsPrivees);
 
         $id = $_REQUEST['id'];
         if (isset($id)) {
@@ -83,6 +100,8 @@ class Controleur
         }
         require($rep . $vues['publique']);
     }
+
+
 
     function ajoutListePublique()
     {
@@ -118,6 +137,7 @@ class Controleur
 
     function supprListe() {
         $idListe = $_REQUEST['idListe'];
+
         $idListe = Validation::nettoyerInt($idListe);
 
         $id = $_REQUEST['id'];
@@ -160,6 +180,45 @@ class Controleur
 
         $_REQUEST['id'] = $idListe;
         $this->accueil();
+    }
+
+    private function seConnecter()
+    {
+        global $dVueEreur;
+        global $rep, $vues; // nécessaire pour utiliser variables globales
+
+        $mdl = new ModeleUser();
+
+        $dVueEreur = array();
+
+        $username = $_REQUEST['username'];
+        $password = $_REQUEST['password'];
+
+        $username = Validation::nettoyerString($username);
+        $password = Validation::nettoyerString($password);
+
+        if ($mdl->connexion($username, $password)){
+            unset($_REQUEST['id']);
+            $this->accueil();
+        }
+        else {
+            $dVueEreur[] = "erreur login";
+            require($rep . $vues['erreur']);
+    }
+
+    }
+
+    private function connexion()
+    {
+        global $rep, $vues; // nécessaire pour utiliser variables globales
+        global $dVueEreur;
+
+        $dVueEreur = array();
+
+
+        $listsPubliques = ListeGateway::findAllPublique();
+
+        require($rep . $vues['login']);
     }
 
 }//fin class

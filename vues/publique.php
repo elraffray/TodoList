@@ -33,25 +33,25 @@
                             foreach ($listsPubliques as $liste) {
                                 $href = "index.php?id=" . $liste->getId();
                                 print "<li >";
-                                    print "<a href=\"$href\" class=\"listeA\">";
-                                        print "<div class=\"liste\">";
-                                            print "<p>" . $liste->getNom() . "</p>";
-                                            print "<form method=\"post\" class='supprListePublique'>";
-                                                print "<button class=\"btn btn-danger\" type=\"submit\">";
-                                                    print "<span class=\"glyphicon glyphicon-trash\"/>";
-                                                print "</button>";
-                                                print "<input type=\"hidden\" name=\"idListe\" value=" . $liste->getId() . "\">";
-                                                print "<input type=\"hidden\" name=\"action\" value=\"supprListePublique\">";
-                                            print "</form>";
-                                        print "</div>";
-                                    print "</a>";
+                                print "<a href=\"$href\" class=\"listeA\">";
+                                print "<div class=\"liste\">";
+                                print "<p>" . $liste->getNom() . "</p>";
+                                print "<form method=\"post\" class='supprListe'>";
+                                print "<button class=\"btn btn-danger\" type=\"submit\">";
+                                print "<span class=\"glyphicon glyphicon-trash\"/>";
+                                print "</button>";
+                                print "<input type=\"hidden\" name=\"idListe\" value=" . $liste->getId() . "\">";
+                                print "<input type=\"hidden\" name=\"action\" value=\"supprListePublique\">";
+                                print "</form>";
+                                print "</div>";
+                                print "</a>";
 
                                 print "</li>";
-                                }
+                            }
                             }
                         ?>
 
-                        <li id="liAjoutListePublique" >
+                        <li class="liAjoutListe" >
                             <form action="" method="post" class="">
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="nom" placeholder="Ajouter">
@@ -68,12 +68,54 @@
                 <br>
                 <li>
                     <a href="#">Privé</a>
+
+
                     <ul>
                         <?php
                         if (isset($listsPrivees)) {
                             foreach ($listsPrivees as $liste) {
-                                print "<li> <a href=\"#\">$liste->getNom()</a> </li>";
+                                $href = "index.php?id=" . $liste->getId();
+                                print "<li >";
+                                print "<a href=\"$href\" class=\"listeA\">";
+                                print "<div class=\"liste\">";
+                                print "<p>" . $liste->getNom() . "</p>";
+                                print "<form method=\"post\" class='supprListe'>";
+                                print "<button class=\"btn btn-danger\" type=\"submit\">";
+                                print "<span class=\"glyphicon glyphicon-trash\"/>";
+                                print "</button>";
+                                print "<input type=\"hidden\" name=\"idListe\" value=" . $liste->getId() . "\">";
+                                print "<input type=\"hidden\" name=\"action\" value=\"supprListePrivée\">";
+                                print "</form>";
+                                print "</div>";
+                                print "</a>";
+
+                                print "</li>";
                             }
+
+                            ?>
+                                <li class="liAjoutListe" >
+                                    <form action="" method="post" class="">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="nom" placeholder="Ajouter">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="submit">Go</button>
+                                            </span>
+                                        </div>
+                                        <input type="hidden" name="action" value="ajoutListePrivée">
+                                    </form>
+                                </li>
+
+                        <?php
+                            print "<form action='' method=\"post\">";
+                            print "<button style=\"color=black\" class=\"btn btn-default\" type=\"submit\">Deconnexion</button>";
+                            print "<input type=\"hidden\" name=\"action\" value=\"seDeconnecter\">";
+                            print "</form>";
+                        }
+                        else {
+                            print "<form action='' method=\"post\">";
+                            print "<button style=\"color=black\" class=\"btn btn-default\" type=\"submit\">Connexion</button>";
+                            print "<input type=\"hidden\" name=\"action\" value=\"connexion\">";
+                            print "</form>";
                         }
                         ?>
                     </ul>
@@ -89,6 +131,7 @@
                 <?php
                 if (isset($list)) {
                 print "<h1>" . $list->getNom() . "</h1>";
+
                 ?>
 
                 <ul class="list-group" id="taches">
@@ -110,9 +153,10 @@
                                         ?>
                                     </div>
                                     <div class="col-sm-1 tacheAction">
-                                            <form method="post" style="width: 25px;">
+
+                                        <form method="post" style="width: 25px;">
                                                 <button class="tacheBtn btn btn-danger" type="submit"><span class="glyphicon glyphicon-remove"/></button>
-                                                <input type="hidden" name="action" value="supprTachePublique">
+                                                <input type = "hidden" name = "action" value = "supprTachePublique">
                                                 <input type="hidden" name="idListe" value=<?php echo htmlspecialchars($tache->getIdListe()) ?>>
                                                 <input type="hidden" name="idTache" value=<?php echo htmlspecialchars($tache->getId()) ?>>
                                             </form>

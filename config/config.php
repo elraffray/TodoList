@@ -14,6 +14,7 @@ $dsn='mysql:host=localhost;dbname=todoList';
 
 $vues['erreur']='vues/erreur.php';
 $vues['publique']='vues/publique.php';
+$vues['login']='vues/login.php';
 
 
 ?>

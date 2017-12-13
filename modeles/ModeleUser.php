@@ -12,29 +12,44 @@ class ModeleUser
 
     }
 
-    public function connexion(string $username, string $password) {
+    public function connexion(string $username, string $password) : bool {
+
+        global $dVueEreur;
+        global $rep, $vues; // nécessaire pour utiliser variables globales
+
+        $dVueEreur = array();
+
+
         $username = Validation::nettoyerString($username);
         $password = Validation::nettoyerString($password);
 
-        if (UserGateway::login($username, $password)) {
-            session_start();
+        try {
+            if (UserGateway::login($username, $password)) {
 
-            $_SESSION['username'] = $username;
-            $_SESSION['password'] = $password;
+                $_SESSION['username'] = $username;
+                $_SESSION['password'] = $password;
+                return true;
+            }
+            return false;
+
+        } catch (Exception $e) {
+            $dVueEreur[] = $e->getMessage();
+            require($rep . $vues['erreur']);
+
         }
 
     }
 
-    public function deconnexion(string $username, string $password) {
+    public function deconnexion() {
         session_unset();
         session_destroy();
         $_SESSION = array();
     }
 
     public function isUser() : bool {
-            if (isset($_SESSION['username']) && isset($_SESSION['password']))
-                return true;
-            return false;
+        if (isset($_SESSION['username']) && isset($_SESSION['password']))
+            return true;
+        return false;
     }
 
 }

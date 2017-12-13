@@ -42,6 +42,8 @@ class ListeGateway
 
         $res = self::$con->getResults();
 
+        $lists = array();
+
         foreach ($res as $row) {
             $lists[] = new Liste($row['id'], $row['nom']);
         }
@@ -59,6 +61,7 @@ class ListeGateway
 
         $res = self::$con->getResults();
 
+        $lists = array();
         foreach ($res as $row) {
             $lists[] = new Liste($row['id'], $row['nom']);
         }
@@ -94,5 +97,29 @@ class ListeGateway
             var_dump($e);
         }
     }
+
+    public static function getUserNameById(int $id) {
+        self::setConnection();
+
+
+        self::$con->executeQuery("SELECT * FROM Liste where id=:id",  array(
+            ':id' => array($id, PDO::PARAM_INT),
+        ));
+
+        $res = self::$con->getResults();
+
+        $s = $res[0]['username'];
+        return $s;
+    }
+
+
+    public static function isPrivate(int $id) : bool {
+        $username = self::getUserNameById($id);
+
+        if ($username != "" && $username != null)
+            return true;
+        return false;
+    }
+
 
 }

@@ -14,7 +14,6 @@
 <body>
 
 <div id="wrapper ">
-
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
@@ -28,7 +27,6 @@
                 <ul>
 
                     <?php
-
                     if (isset($listsPubliques)) {
                         foreach ($listsPubliques as $liste) {
                             $href = "index.php?id=" . $liste->getId();
@@ -36,7 +34,7 @@
                             print "<a href=\"$href\" class=\"listeA\">";
                             print "<div class=\"liste\">";
                             print "<p>" . $liste->getNom() . "</p>";
-                            print "<form method=\"post\" class='supprListePublique'>";
+                            print "<form method=\"post\" class='supprListe'>";
                             print "<button class=\"btn btn-danger\" type=\"submit\">";
                             print "<span class=\"glyphicon glyphicon-trash\"/>";
                             print "</button>";
@@ -45,19 +43,18 @@
                             print "</form>";
                             print "</div>";
                             print "</a>";
-
                             print "</li>";
                         }
                     }
                     ?>
 
-                    <li id="liAjoutListePublique" >
+                    <li class="liAjoutListe" >
                         <form action="" method="post" class="">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="nom" placeholder="Ajouter">
                                 <span class="input-group-btn">
                                         <button class="btn btn-default" type="submit">Go</button>
-                                    </span>
+                                </span>
                             </div>
                             <input type="hidden" name="action" value="ajoutListePublique">
                         </form>
@@ -66,18 +63,6 @@
             </li>
             <br>
             <br>
-            <li>
-                <a href="#">Privé</a>
-                <ul>
-                    <?php
-                    if (isset($listsPrivees)) {
-                        foreach ($listsPrivees as $liste) {
-                            print "<li> <a href=\"#\">$liste->getNom()</a> </li>";
-                        }
-                    }
-                    ?>
-                </ul>
-            </li>
 
         </ul>
     </div>
@@ -93,6 +78,7 @@
                     <label for="pwd">Password:</label>
                     <input name="password" type="password" class="form-control" id="pwd">
                     <button class="btn btn-primary" type="submit">Se Connecter</button>
+                    <input type="hidden" name="action" value="seConnecter">
                 </div>
             </form>
         </div>

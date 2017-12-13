@@ -20,20 +20,18 @@ class UserGateway
     public static function login(string $username, string $password) : bool {
         self::setConnection();
 
-        try {
-            self::$con->executeQuery("Select count(1) from users where username=:username and password=:password", array(
-                ':username' => array($username, PDO::PARAM_STR),
-                ':password' => array($password, PDO::PARAM_STR),
-            ));
 
-            $res = self::$con->getResults();
+        self::$con->executeQuery("Select count(1) as count from users where username=:username and password=:password", array(
+            ':username' => array($username, PDO::PARAM_STR),
+            ':password' => array($password, PDO::PARAM_STR),
+        ));
 
-            if ($res[0]['count'] == 1) return true;
+        $res = self::$con->getResults();
 
-            return false;
+        if ($res[0]['count'] == 1) return true;
 
-        } catch(PDOException $e) {
-            var_dump($e);
-        }
+        return false;
+
+
     }
 }

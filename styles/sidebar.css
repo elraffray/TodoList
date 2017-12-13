@@ -132,7 +132,7 @@ body {
   color: #aaaaaa;
 }
 
-#liAjoutListePublique {
+.liAjoutListe {
   text-indent: 0px !important;
   line-height: normal !important;
   padding-right: 15px;
@@ -159,10 +159,10 @@ body {
 }
 
 
-.listeA .supprListePublique {
+.listeA .supprListe {
   display: none;
 }
 
-.listeA:hover .supprListePublique {
+.listeA:hover .supprListe {
   display: block;
 }
