@@ -7,7 +7,7 @@ $rep=__DIR__.'/../';
 //BD
 
 $user= 'elone';
-$pass='elone';
+$pass='reza';
 $dsn='mysql:host=localhost;dbname=todoList';
 
 //Vues

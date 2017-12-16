@@ -21,14 +21,15 @@ class UserGateway
         self::setConnection();
 
 
-        self::$con->executeQuery("Select count(1) as count from users where username=:username and password=:password", array(
-            ':username' => array($username, PDO::PARAM_STR),
-            ':password' => array($password, PDO::PARAM_STR),
+        self::$con->executeQuery("Select password from users where username=:username", array(
+            ':username' => array($username, PDO::PARAM_STR)
         ));
 
         $res = self::$con->getResults();
 
-        if ($res[0]['count'] == 1) return true;
+        if (count($res) != 0 )
+            if (password_verify($password, $res[0]['password']))
+                return true;
 
         return false;
 

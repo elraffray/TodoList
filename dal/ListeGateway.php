@@ -23,7 +23,7 @@ class ListeGateway
 
         if ($nom == "") return;
 
-        $query = "INSERT INTO Liste VALUES (:id, :nom, :username)";
+        $query = "INSERT INTO liste VALUES (:id, :nom, :username)";
         $args = array(
             ':id' => array(null, PDO::PARAM_INT),
             ':nom' => array($nom, PDO::PARAM_STR),
@@ -38,7 +38,7 @@ class ListeGateway
     public static function findAllPublique() : array {
         self::setConnection();
 
-        self::$con->executeQuery("SELECT * FROM Liste where username IS NULL", array());
+        self::$con->executeQuery("SELECT * FROM liste where username IS NULL", array());
 
         $res = self::$con->getResults();
 
@@ -55,7 +55,7 @@ class ListeGateway
     public static function findByUser(string $username) : array {
         self::setConnection();
 
-        self::$con->executeQuery("SELECT * FROM Liste where username=:username", array(
+        self::$con->executeQuery("SELECT * FROM liste where username=:username", array(
             ':username' => array($username, PDO::PARAM_STR)
         ));
 
@@ -74,7 +74,7 @@ class ListeGateway
         self::setConnection();
 
 
-        self::$con->executeQuery("SELECT * FROM Liste where id=:id",  array(
+        self::$con->executeQuery("SELECT * FROM liste where id=:id",  array(
             ':id' => array($id, PDO::PARAM_INT),
         ));
 
@@ -90,7 +90,7 @@ class ListeGateway
 
             TacheGateway::supprByList($id);
 
-            self::$con->executeQuery("DELETE FROM Liste where id=:id", array(
+            self::$con->executeQuery("DELETE FROM liste where id=:id", array(
                 ':id' => array($id, PDO::PARAM_INT),
             ));
         } catch(PDOException $e) {
@@ -102,7 +102,7 @@ class ListeGateway
         self::setConnection();
 
 
-        self::$con->executeQuery("SELECT * FROM Liste where id=:id",  array(
+        self::$con->executeQuery("SELECT * FROM liste where id=:id",  array(
             ':id' => array($id, PDO::PARAM_INT),
         ));
 

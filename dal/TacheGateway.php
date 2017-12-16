@@ -25,7 +25,7 @@ class TacheGateway
 
         if ($nom == "") return;
 
-        $query = "INSERT INTO Tache VALUES (:id, :idListe, :nom, :description, now(), :dateFin)";
+        $query = "INSERT INTO tache VALUES (:id, :idListe, :nom, :description, now(), :dateFin)";
         $args = array(
             ':id' => array(NULL, PDO::PARAM_INT),
             ':idListe' => array($idListe, PDO::PARAM_INT),
@@ -49,7 +49,7 @@ class TacheGateway
     public static function findAllByList(int $idListe) {
         self::setConnection();
         try {
-            self::$con->executeQuery("SELECT * FROM Tache where idListe=:idListe order by dateFin, dateAjout desc", array(
+            self::$con->executeQuery("SELECT * FROM tache where idListe=:idListe order by dateFin, dateAjout desc", array(
                 ':idListe' => array($idListe, PDO::PARAM_INT),
             ));
 
@@ -73,7 +73,7 @@ class TacheGateway
         self::setConnection();
 
         try {
-            self::$con->executeQuery("delete from Tache where id=:id and idListe=:idListe", array(
+            self::$con->executeQuery("delete from tache where id=:id and idListe=:idListe", array(
                 ':id' => array($idTache, PDO::PARAM_INT),
                 ':idListe' => array($idListe, PDO::PARAM_INT),
             ));
@@ -87,7 +87,7 @@ class TacheGateway
         self::setConnection();
 
         try {
-            self::$con->executeQuery("delete from Tache where idListe=:idListe", array(
+            self::$con->executeQuery("delete from tache where idListe=:idListe", array(
                 ':idListe' => array($idListe, PDO::PARAM_INT),
             ));
         } catch(Exception $e) {
@@ -103,7 +103,7 @@ class TacheGateway
         self::setConnection();
 
         try {
-            self::$con->executeQuery("update Tache set dateFin=now() where id=:id and idListe=:idListe", array(
+            self::$con->executeQuery("update tache set dateFin=now() where id=:id and idListe=:idListe", array(
                 ':id' => array($idTache, PDO::PARAM_INT),
                 ':idListe' => array($idListe, PDO::PARAM_INT),
             ));

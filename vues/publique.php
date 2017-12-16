@@ -156,7 +156,13 @@
 
                                         <form method="post" style="width: 25px;">
                                                 <button class="tacheBtn btn btn-danger" type="submit"><span class="glyphicon glyphicon-remove"/></button>
+
+                                            <?php if (!ListeGateway::isPrivate($list->getId())) { ?>
                                                 <input type = "hidden" name = "action" value = "supprTachePublique">
+                                            <?php } else { ?>
+                                                <input type = "hidden" name = "action" value = "supprTachePrivée">
+                                            <?php } ?>
+
                                                 <input type="hidden" name="idListe" value=<?php echo htmlspecialchars($tache->getIdListe()) ?>>
                                                 <input type="hidden" name="idTache" value=<?php echo htmlspecialchars($tache->getId()) ?>>
                                             </form>
@@ -164,7 +170,10 @@
                                             if ($tache->getDateFin() == null) {
                                                 print '<form method="post" style="width: 25px">';
                                                     print "<button class=\"tacheBtn btn btn-primary\" type=\"submit\"><span class=\"glyphicon glyphicon-ok\"/></button>";
-                                                    print "<input type=\"hidden\" name=\"action\" value=\"completerTachePublique\">";
+                                                    if (!ListeGateway::isPrivate($list->getId()))
+                                                        print "<input type=\"hidden\" name=\"action\" value=\"completerTachePublique\">";
+                                                    else
+                                                        print "<input type=\"hidden\" name=\"action\" value=\"completerTachePrivée\">";
                                                     print "<input type=\"hidden\" name=\"idListe\" value=" . $tache->getIdListe() . ">";
                                                     print "<input type=\"hidden\" name=\"idTache\" value=" . $tache->getId() . ">";
                                                 print "</form>";
@@ -184,8 +193,11 @@
                                 <input type="text" name="nom" placeholder="Tache"/>
                                 <textarea name="desc" form="newTache" placeholder="Description"></textarea>
                                 <input type="submit" value="Valider"/>
-
-                                <input type="hidden" name="action" value="ajoutTachePublique">
+                                <?php if (!ListeGateway::isPrivate($list->getId())) { ?>
+                                    <input type="hidden" name="action" value="ajoutTachePublique">
+                                <?php } else { ?>
+                                    <input type="hidden" name="action" value="ajoutTachePrivée">
+                                <?php } ?>
                                 <input type="hidden" name="idListe" value=<?php echo htmlspecialchars($list->getId()) ?>>
                             </form>
                         </div>
