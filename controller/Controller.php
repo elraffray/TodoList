@@ -93,8 +93,8 @@ class Controller
         if (isset($id)) {
             $id = Validation::nettoyerInt($id);
             $list = ListeGateway::findById($id);
-            $taches = TacheGateway::findAllByList($id);
-            //$taches = TacheGateway::findLimitByList($id,0,2);
+            //$taches = TacheGateway::findAllByList($id);
+            $taches = TacheGateway::findLimitByList($id,0,2);
             if ($taches != null) {
                 $list->setTaches($taches);
             }
@@ -141,11 +141,13 @@ class Controller
 
         $idListe = Validation::nettoyerInt($idListe);
 
-        $id = $_REQUEST['id'];
-        $id = Validation::nettoyerInt($id);
+        if (isset($_REQUEST['id'])) {
+            $id = $_REQUEST['id'];
+            $id = Validation::nettoyerInt($id);
 
-        if ($id == $idListe)
-            $_REQUEST['id'] = null;
+            if ($id == $idListe)
+                $_REQUEST['id'] = null;
+        }
 
         ListeGateway::supprById($idListe);
         $this->accueil();
