@@ -94,6 +94,7 @@ class Controller
             $id = Validation::nettoyerInt($id);
             $list = ListeGateway::findById($id);
             $taches = TacheGateway::findAllByList($id);
+            //$taches = TacheGateway::findLimitByList($id,0,2);
             if ($taches != null) {
                 $list->setTaches($taches);
             }

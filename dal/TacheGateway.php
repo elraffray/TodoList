@@ -114,4 +114,47 @@ class TacheGateway
     }
 
 
+    //=============pagination===================
+    public static function GetNumberOfTache($idListe){
+        self::setConnection();
+        try {
+            self::$con->executeQuery("select count(*) from tache where idListe=:idListe", array(
+                ':idListe' => array($idListe, PDO::PARAM_INT),
+            ));
+            $res = self::$con->getResults();
+        } catch(Exception $e) {
+            echo 'Exception -> ';
+            var_dump($e->getMessage());
+        }
+        foreach ($res as $row) {
+            return $row[0];
+        }
+    }
+
+    public static function findLimitByList(int $idListe, int $page, int $tachesParPage) {
+        self::setConnection();
+        try {
+            self::$con->executeQuery("SELECT * FROM tache where idListe=:idListe order by dateFin, dateAjout desc limit :page, :tachesParPage", array(
+                ':idListe' => array($idListe, PDO::PARAM_INT),
+                ':page' => array($page, PDO::PARAM_INT),
+                ':tachesParPage' => array($tachesParPage, PDO::PARAM_INT),
+            ));
+
+            $res = self::$con->getResults();
+        } catch (PDOException $e) {
+            var_dump($e);
+        }
+
+        try {
+            foreach ($res as $row) {
+                $taches[] = new Tache($row['id'], $row['idListe'], $row['nom'], $row['description'], $row['dateAjout']);
+                if ($row['dateFin'] != null) $taches[count($taches)-1]->setDateFin($row['dateFin']);
+            }
+        } catch (Exception $e) {
+            var_dump($e);
+        }
+        return $taches;
+    }
+
+
 }
