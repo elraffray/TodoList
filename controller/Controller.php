@@ -79,27 +79,38 @@ class Controller
 
     function accueil()
     {
-        global $rep, $vues; // nécessaire pour utiliser variables globales
-        $listsPubliques = ListeGateway::findAllPublique();
 
-        $mdl = new ModeleUser();
-        if ($mdl->isUser()) {
-            $listsPrivees = ListeGateway::findByUser($_SESSION['username']);
-        }
-        else
-            unset($listsPrivees);
+        try {
+            global $rep, $vues; // nécessaire pour utiliser variables globales
+            $listsPubliques = ListeGateway::findAllPublique();
+            $mdl = new ModeleUser();
+            if ($mdl->isUser()) {
+                $listsPrivees = ListeGateway::findByUser($_SESSION['username']);
+            } else
+                unset($listsPrivees);
 
-        $id = $_REQUEST['id'];
-        if (isset($id)) {
-            $id = Validation::nettoyerInt($id);
-            $list = ListeGateway::findById($id);
-            //$taches = TacheGateway::findAllByList($id);
-            $taches = TacheGateway::findLimitByList($id,0,2);
-            if ($taches != null) {
-                $list->setTaches($taches);
+            $id = $_REQUEST['id'];
+            $p = $_REQUEST['p'];
+            if (isset($id)) {
+                $id = Validation::nettoyerInt($id);
+                $list = ListeGateway::findById($id);
+                $p = Validation::nettoyerInt($p);
+                if (!isset($p))
+                    $p = 1;
+                else if ($p < 1)
+                    $p = 1;
+                $taches = TacheGateway::findLimitByList($id, $p-1, 2);
+                //$pmax = TacheGateway::getNumberOfTache($id)/2;
+                if ($taches != null) {
+                    $list->setTaches($taches);
+                }
             }
+            require($rep . $vues['publique']);
+
+
+        } catch (Exception $e) {
+            var_dump($e);
         }
-        require($rep . $vues['publique']);
     }
 
 

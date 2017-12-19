@@ -115,7 +115,7 @@ class TacheGateway
 
 
     //=============pagination===================
-    public static function GetNumberOfTache($idListe){
+    public static function getNumberOfTache($idListe){
         self::setConnection();
         try {
             self::$con->executeQuery("select count(*) from tache where idListe=:idListe", array(
@@ -155,6 +155,8 @@ class TacheGateway
         }
         return $taches;
     }
+
+
 
 
 }

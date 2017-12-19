@@ -35,4 +35,18 @@
     border-color: #bbbbbb;
 }
 
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.pagination .input-group {
+    width: 150px;
+}
+
+.pagination span.input-group-btn {
+    width: 50px !important;
+    max-width: 50px !important;
+}
 

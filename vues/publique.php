@@ -179,10 +179,12 @@
                                                 print "</form>";
                                             }
                                             ?>
+                                        <p>haaaa</p>
                                     </div>
                                 </div>
                             </li>
                             <?php
+
                         }
                     }
 
@@ -202,11 +204,40 @@
                             </form>
                         </div>
                     </li>
+                </ul>
+
+                <div class="row ">
+                    <div class="pagination">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <?php
+                                if ($p == 0) {
+                                    $prec = "index.php?id=" . $list->getId() . "&p=" . $p;
+                                    print "<a href=\"$prec\" class='btn btn-default disabled' role='button'>Prec</a>";
+                                }
+                                else {
+                                    $tmp = $p - 1;
+                                    $prec = "index.php?id=" . $list->getId() . "&p=" . $tmp;
+                                    print "<a href=\"$prec\" class='btn btn-default' role='button'>Prec</a>";
+                                }
+
+                                ?>
+                            </span>
+                            <span class="input-group-addon"><?php echo $p . "/" . $p?></span>
+                            <span class="input-group-btn">
+                                <?php
+                                $tmp = $p+1;
+                                $suiv = "index.php?id=" . $list->getId() . "&p=" . $tmp;
+                                print "<a href=\"$suiv\" class='btn btn-default' role='button'>Prec</a>";
+                                ?>
+                            </span>
+                        </div>
+                    </div>
+                </div>
                     <?php
                 }
                     ?>
 
-                </ul>
             </div>
 
         </div>

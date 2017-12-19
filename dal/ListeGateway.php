@@ -98,7 +98,7 @@ class ListeGateway
         }
     }
 
-    public static function getUserNameById(int $id) {
+    public static function getUserNameById(int $id) : string  {
         self::setConnection();
 
 
@@ -120,6 +120,8 @@ class ListeGateway
             return true;
         return false;
     }
+
+
 
 
 }
