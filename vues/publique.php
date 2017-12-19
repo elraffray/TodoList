@@ -223,7 +223,7 @@
 
                                 ?>
                             </span>
-                            <span class="input-group-addon"><?php echo $p . "/" . $p?></span>
+                            <span class="input-group-addon"><?php echo $p . "/" . $pmax?></span>
                             <span class="input-group-btn">
                                 <?php
                                 $tmp = $p+1;

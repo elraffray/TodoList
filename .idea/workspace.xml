@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b13eb7b-5f2e-4102-8eb6-2d7de6164484" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/controller/Controller.php" afterPath="$PROJECT_DIR$/controller/Controller.php" />
-      <change beforePath="$PROJECT_DIR$/dal/ListeGateway.php" afterPath="$PROJECT_DIR$/dal/ListeGateway.php" />
-      <change beforePath="$PROJECT_DIR$/dal/TacheGateway.php" afterPath="$PROJECT_DIR$/dal/TacheGateway.php" />
-      <change beforePath="$PROJECT_DIR$/styles/index.css" afterPath="$PROJECT_DIR$/styles/index.css" />
       <change beforePath="$PROJECT_DIR$/vues/publique.php" afterPath="$PROJECT_DIR$/vues/publique.php" />
     </list>
     <ignored path="TodoList.iws" />
@@ -37,25 +33,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="publique.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="publique.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vues/publique.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="226" column="58" lean-forward="true" selection-start-line="226" selection-start-column="58" selection-end-line="226" selection-end-column="58" />
+            <state relative-caret-position="215">
+              <caret line="225" column="87" lean-forward="false" selection-start-line="225" selection-start-column="87" selection-end-line="225" selection-end-column="87" />
               <folding>
-                <marker date="1513695119797" expanded="true" signature="5364:5375" ph="..." />
-                <marker date="1513695119797" expanded="true" signature="5767:5778" ph="..." />
-                <marker date="1513695119797" expanded="true" signature="8818:8829" ph="..." />
+                <marker date="1513695348020" expanded="true" signature="5364:5375" ph="..." />
+                <marker date="1513695348020" expanded="true" signature="5767:5778" ph="..." />
+                <marker date="1513695348020" expanded="true" signature="8818:8829" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Controller.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="101" column="46" lean-forward="false" selection-start-line="101" selection-start-column="46" selection-end-line="101" selection-end-column="46" />
+            <state relative-caret-position="272">
+              <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -145,10 +141,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 7" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="8" />
-    <option name="y" value="19" />
-    <option name="width" value="1350" />
-    <option name="height" value="741" />
+    <option name="x" value="10" />
+    <option name="y" value="21" />
+    <option name="width" value="668" />
+    <option name="height" value="737" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -324,18 +320,18 @@
       <workItem from="1513183987102" duration="2039000" />
       <workItem from="1513433337738" duration="4968000" />
       <workItem from="1513613442356" duration="738000" />
-      <workItem from="1513688777253" duration="6372000" />
+      <workItem from="1513688777253" duration="6718000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69188000" />
+    <option name="totallyTimeSpent" value="69534000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="8" y="19" width="1350" height="741" extended-state="0" />
+    <frame x="10" y="21" width="668" height="737" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18127786" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36746988" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -755,23 +751,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/Controller.php">
+    <entry file="file://$PROJECT_DIR$/vues/publique.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="101" column="46" lean-forward="false" selection-start-line="101" selection-start-column="46" selection-end-line="101" selection-end-column="46" />
-          <folding />
+        <state relative-caret-position="215">
+          <caret line="225" column="87" lean-forward="false" selection-start-line="225" selection-start-column="87" selection-end-line="225" selection-end-column="87" />
+          <folding>
+            <marker date="1513695348020" expanded="true" signature="5364:5375" ph="..." />
+            <marker date="1513695348020" expanded="true" signature="5767:5778" ph="..." />
+            <marker date="1513695348020" expanded="true" signature="8818:8829" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vues/publique.php">
+    <entry file="file://$PROJECT_DIR$/controller/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="226" column="58" lean-forward="true" selection-start-line="226" selection-start-column="58" selection-end-line="226" selection-end-column="58" />
-          <folding>
-            <marker date="1513695119797" expanded="true" signature="5364:5375" ph="..." />
-            <marker date="1513695119797" expanded="true" signature="5767:5778" ph="..." />
-            <marker date="1513695119797" expanded="true" signature="8818:8829" ph="..." />
-          </folding>
+        <state relative-caret-position="272">
+          <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

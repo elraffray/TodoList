@@ -89,18 +89,20 @@ class Controller
             } else
                 unset($listsPrivees);
 
-            $id = $_REQUEST['id'];
-            $p = $_REQUEST['p'];
+            if (!isset($_REQUEST['p']))
+                $p = $_REQUEST['p'];
+            if (!isset($_REQUEST['id']))
+                $id = $_REQUEST['id'];
+
             if (isset($id)) {
                 $id = Validation::nettoyerInt($id);
                 $list = ListeGateway::findById($id);
                 $p = Validation::nettoyerInt($p);
-                if (!isset($p))
+                if ($p < 1)
                     $p = 1;
-                else if ($p < 1)
-                    $p = 1;
+
                 $taches = TacheGateway::findLimitByList($id, $p-1, 2);
-                //$pmax = TacheGateway::getNumberOfTache($id)/2;
+                $pmax = TacheGateway::getNumberOfTache($id)/2;
                 if ($taches != null) {
                     $list->setTaches($taches);
                 }
