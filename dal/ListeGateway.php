@@ -98,7 +98,7 @@ class ListeGateway
         }
     }
 
-    public static function getUserNameById(int $id) : string  {
+    public static function getUserNameById(int $id){
         self::setConnection();
 
 
@@ -113,9 +113,8 @@ class ListeGateway
     }
 
 
-    public static function isPrivate(int $id) : bool {
+    public static function isPrivate(int $id) {
         $username = self::getUserNameById($id);
-
         if ($username != "" && $username != null)
             return true;
         return false;

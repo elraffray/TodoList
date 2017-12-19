@@ -86,12 +86,15 @@ class Controller
             $mdl = new ModeleUser();
             if ($mdl->isUser()) {
                 $listsPrivees = ListeGateway::findByUser($_SESSION['username']);
+
             } else
                 unset($listsPrivees);
 
-            if (!isset($_REQUEST['p']))
+            if (isset($_REQUEST['p']))
                 $p = $_REQUEST['p'];
-            if (!isset($_REQUEST['id']))
+            else
+                $p = 1;
+            if (isset($_REQUEST['id']))
                 $id = $_REQUEST['id'];
 
             if (isset($id)) {
@@ -102,7 +105,8 @@ class Controller
                     $p = 1;
 
                 $taches = TacheGateway::findLimitByList($id, $p-1, 2);
-                $pmax = TacheGateway::getNumberOfTache($id)/2;
+                //$taches = TacheGateway::findAllByList($id);
+                $pmax = ceil(TacheGateway::getNumberOfTache($id)/2);
                 if ($taches != null) {
                     $list->setTaches($taches);
                 }

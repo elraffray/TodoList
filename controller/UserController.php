@@ -26,7 +26,6 @@ class UserController extends Controller
                     $this->ajoutListePrive();
                     break;
                 case "supprListePrivée":
-                    print "eee";
                     $this->supprListePrive();
                     break;
 
@@ -85,7 +84,7 @@ class UserController extends Controller
 
         ListeGateway::insert($nom, $_SESSION['username']);
 
-        $this->accueil();
+        parent::accueil();
     }
 
     private function supprListePrive()

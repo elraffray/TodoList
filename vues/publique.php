@@ -139,6 +139,7 @@
                     <?php
                     if (isset($taches)) {
                         foreach ($list->getTaches() as $tache) {
+
                             ?>
                             <li class="list-group-item <?php if ($tache->getDateFin() != null) echo "disabled"; ?>">
                                 <div class="row tache" style="width: 100%; padding: 0">
@@ -155,31 +156,30 @@
                                     <div class="col-sm-1 tacheAction">
 
                                         <form method="post" style="width: 25px;">
-                                                <button class="tacheBtn btn btn-danger" type="submit"><span class="glyphicon glyphicon-remove"/></button>
+                                            <button class="tacheBtn btn btn-danger" type="submit"><span class="glyphicon glyphicon-remove"/></button>
 
-                                            <?php if (!ListeGateway::isPrivate($list->getId())) { ?>
-                                                <input type = "hidden" name = "action" value = "supprTachePublique">
-                                            <?php } else { ?>
-                                                <input type = "hidden" name = "action" value = "supprTachePrivée">
-                                            <?php } ?>
-
-                                                <input type="hidden" name="idListe" value=<?php echo htmlspecialchars($tache->getIdListe()) ?>>
-                                                <input type="hidden" name="idTache" value=<?php echo htmlspecialchars($tache->getId()) ?>>
-                                            </form>
-                                            <?php
-                                            if ($tache->getDateFin() == null) {
-                                                print '<form method="post" style="width: 25px">';
-                                                    print "<button class=\"tacheBtn btn btn-primary\" type=\"submit\"><span class=\"glyphicon glyphicon-ok\"/></button>";
-                                                    if (!ListeGateway::isPrivate($list->getId()))
-                                                        print "<input type=\"hidden\" name=\"action\" value=\"completerTachePublique\">";
-                                                    else
-                                                        print "<input type=\"hidden\" name=\"action\" value=\"completerTachePrivée\">";
-                                                    print "<input type=\"hidden\" name=\"idListe\" value=" . $tache->getIdListe() . ">";
-                                                    print "<input type=\"hidden\" name=\"idTache\" value=" . $tache->getId() . ">";
-                                                print "</form>";
-                                            }
+                                            <?php if (!ListeGateway::isPrivate($list->getId()))
+                                                print "<input type=\"hidden\" name=\"action\" value=\"supprTachePublique\">";
+                                            else
+                                                print "<input type=\"hidden\" name=\"action\" value=\"supprTachePrivée\">";
                                             ?>
-                                        <p>haaaa</p>
+                                            <input type="hidden" name="idListe" value=<?php echo htmlspecialchars($tache->getIdListe()) ?>>
+                                            <input type="hidden" name="idTache" value=<?php echo htmlspecialchars($tache->getId()) ?>>
+                                        </form>
+
+                                        <?php
+                                        if ($tache->getDateFin() == null) {
+                                            print '<form method="post" style="width: 25px">';
+                                                print "<button class=\"tacheBtn btn btn-primary\" type=\"submit\"><span class=\"glyphicon glyphicon-ok\"/></button>";
+                                                if (!ListeGateway::isPrivate($list->getId()))
+                                                    print "<input type=\"hidden\" name=\"action\" value=\"completerTachePublique\">";
+                                                else
+                                                    print "<input type=\"hidden\" name=\"action\" value=\"completerTachePrivée\">";
+                                                print "<input type=\"hidden\" name=\"idListe\" value=" . $tache->getIdListe() . ">";
+                                                print "<input type=\"hidden\" name=\"idTache\" value=" . $tache->getId() . ">";
+                                            print "</form>";
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </li>
@@ -209,28 +209,34 @@
                 <div class="row ">
                     <div class="pagination">
                         <div class="input-group">
-                            <span class="input-group-btn">
-                                <?php
-                                if ($p == 0) {
-                                    $prec = "index.php?id=" . $list->getId() . "&p=" . $p;
-                                    print "<a href=\"$prec\" class='btn btn-default disabled' role='button'>Prec</a>";
-                                }
-                                else {
-                                    $tmp = $p - 1;
-                                    $prec = "index.php?id=" . $list->getId() . "&p=" . $tmp;
-                                    print "<a href=\"$prec\" class='btn btn-default' role='button'>Prec</a>";
-                                }
+                        <span class="input-group-btn">
+                            <?php
+                            if ($p == 1) {
+                                $prec = "index.php?id=" . $list->getId() . "&p=" . $p;
+                                print "<a href=\"$prec\" class='btn btn-default disabled' role='button'>Prec</a>";
+                            }
+                            else {
+                                $tmp = $p - 1;
+                                $prec = "index.php?id=" . $list->getId() . "&p=" . $tmp;
+                                print "<a href=\"$prec\" class='btn btn-default' role='button'>Prec</a>";
+                            }
 
-                                ?>
-                            </span>
+                            ?>
+                        </span>
                             <span class="input-group-addon"><?php echo $p . "/" . $pmax?></span>
                             <span class="input-group-btn">
-                                <?php
-                                $tmp = $p+1;
+                            <?php
+                            if ($p == $pmax) {
+                                $suiv = "index.php?id=" . $list->getId() . "&p=" . $p;
+                                print "<a href=\"$suiv\" class='btn btn-default disabled' role='button'>Prec</a>";
+                            }
+                            else {
+                                $tmp = $p + 1;
                                 $suiv = "index.php?id=" . $list->getId() . "&p=" . $tmp;
                                 print "<a href=\"$suiv\" class='btn btn-default' role='button'>Prec</a>";
-                                ?>
-                            </span>
+                            }
+                            ?>
+                        </span>
                         </div>
                     </div>
                 </div>

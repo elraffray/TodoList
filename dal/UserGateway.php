@@ -27,10 +27,10 @@ class UserGateway
 
         $res = self::$con->getResults();
 
-        if (count($res) != 0 )
+        if (count($res) != 0 ) {
             if (password_verify($password, $res[0]['password']))
                 return true;
-
+        }
         return false;
 
 
