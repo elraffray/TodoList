@@ -74,12 +74,15 @@ class ListeGateway
         self::setConnection();
 
 
-        self::$con->executeQuery("SELECT * FROM liste where id=:id",  array(
+        self::$con->executeQuery("SELECT id, nom FROM liste where id=:id",  array(
             ':id' => array($id, PDO::PARAM_INT),
         ));
 
         $res = self::$con->getResults();
-        return new Liste($res[0]['id'], $res[0]['nom']);
+
+        if (count($res) > 0)
+            return new Liste($res[0]['id'], $res[0]['nom']);
+        else return new Liste(-1, "");
     }
 
 

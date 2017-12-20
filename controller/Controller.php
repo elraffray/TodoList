@@ -106,6 +106,8 @@ class Controller
             if (isset($id)) {
                 $id = Validation::nettoyerInt($id);
                 $list = ListeGateway::findById($id);
+                if ($list->getId() == -1)
+                    unset($list);
                 $p = Validation::nettoyerInt($p);
                 $pmax = ceil(TacheGateway::getNumberOfTache($id)/5);
                 if ($p < 1 || $p > $pmax)
@@ -192,9 +194,12 @@ class Controller
         try {
             global $dVueEreur;
             global $rep, $vues; // nécessaire pour utiliser variables globales
-            $idListe = $_REQUEST['idListe'];
 
-            $idListe = Validation::nettoyerInt($idListe);
+
+            if (isset($_REQUEST['idListe'])) {
+                $idListe = $_REQUEST['idListe'];
+                $idListe = Validation::nettoyerInt($idListe);
+            }
 
             if (isset($_REQUEST['id'])) {
                 $id = $_REQUEST['id'];
