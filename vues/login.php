@@ -77,8 +77,8 @@
                     <input name="username" type="text" class="form-control" id="usr">
                     <label for="pwd">Password:</label>
                     <input name="password" type="password" class="form-control" id="pwd">
-                    <button class="btn btn-primary" type="submit">Se Connecter</button>
-                    <input type="hidden" name="action" value="seConnecter">
+                    <button class="btn btn-primary" type="submit" name="action" value="seConnecter">Se Connecter</button>
+                    <button class="btn btn-primary" type="submit" name="action" value="creerCompte">S'inscrire</button>
                 </div>
             </form>
         </div>

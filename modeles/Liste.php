@@ -14,7 +14,16 @@ class Liste
 
     private $taches;
 
-    public function getId() {
+
+    public function __construct(int $id, string $nom) {
+        $this->id = $id;
+        $this->nom = $nom;
+        $this->taches = array();
+    }
+
+
+
+    public function getId() : int {
         return $this->id;
     }
     public function setId(int $id) {
@@ -29,7 +38,7 @@ class Liste
     }
 
 
-    public function getNom() {
+    public function getNom() : string {
         return $this->nom;
     }
     public function setNom(string $nom) {
@@ -37,9 +46,4 @@ class Liste
     }
 
 
-    public function __construct(int $id, string $nom) {
-        $this->id = $id;
-        $this->nom = $nom;
-
-    }
 }

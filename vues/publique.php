@@ -149,7 +149,7 @@
                                         print "<h4 class='mb-1'>" . $tache->getNom() . "</h4>";
                                         print "<h5 class='mb-1'>" . $tache->getDescription() . "</h5>";
                                         print "<p><small>" . $tache->getDateAjout() . "</small>";
-                                        if ($tache->getDateFin() != null) print "<small>" . "  --  " . $tache->getDateFin() . "</small>";
+                                        if ($tache->getDateFin() != "") print "<small>" . "  --  " . $tache->getDateFin() . "</small>";
                                         print "</p>";
                                         ?>
                                     </div>
@@ -168,7 +168,7 @@
                                         </form>
 
                                         <?php
-                                        if ($tache->getDateFin() == null) {
+                                        if ($tache->getDateFin() == "") {
                                             print '<form method="post" style="width: 25px">';
                                                 print "<button class=\"tacheBtn btn btn-primary\" type=\"submit\"><span class=\"glyphicon glyphicon-ok\"/></button>";
                                                 if (!ListeGateway::isPrivate($list->getId()))
@@ -226,9 +226,9 @@
                             <span class="input-group-addon"><?php echo $p . "/" . $pmax?></span>
                             <span class="input-group-btn">
                             <?php
-                            if ($p == $pmax) {
+                            if ($p >= $pmax) {
                                 $suiv = "index.php?id=" . $list->getId() . "&p=" . $p;
-                                print "<a href=\"$suiv\" class='btn btn-default disabled' role='button'>Prec</a>";
+                                print "<a href=\"$suiv\" class='btn btn-default disabled' role='button'>Suiv</a>";
                             }
                             else {
                                 $tmp = $p + 1;

@@ -17,7 +17,7 @@ class FrontController
         //on initialise un tableau d'erreur
         $dVueEreur = array();
 
-        $actions=["ajoutListePublique", "ajoutTachePublique", "supprListePublique", "supprTachePublique", "completerTachePublique", "seConnecter", "connexion"];
+        $actions=["ajoutListePublique", "ajoutTachePublique", "supprListePublique", "supprTachePublique", "completerTachePublique", "seConnecter", "connexion", "creerCompte"];
         $userActions=["seDeconnecter", "ajoutListePrivée", "ajoutTachePrivée", "supprListePrivée", "supprTachePrivée", "completerTachePrivée"];
 
         try

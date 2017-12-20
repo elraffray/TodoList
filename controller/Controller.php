@@ -102,16 +102,17 @@ class Controller
             if (isset($_REQUEST['id']))
                 $id = $_REQUEST['id'];
 
+
             if (isset($id)) {
-                $id = Validation::nettoyerInt(null);
+                $id = Validation::nettoyerInt($id);
                 $list = ListeGateway::findById($id);
                 $p = Validation::nettoyerInt($p);
-                if ($p < 1)
+                $pmax = ceil(TacheGateway::getNumberOfTache($id)/5);
+                if ($p < 1 || $p > $pmax)
                     $p = 1;
 
-                $taches = TacheGateway::findLimitByList($id, $p-1, 2);
+                $taches = TacheGateway::findLimitByList($id, $p-1, 5);
                 //$taches = TacheGateway::findAllByList($id);
-                $pmax = ceil(TacheGateway::getNumberOfTache($id)/2);
                 if ($taches != null) {
                     $list->setTaches($taches);
                 }
@@ -124,7 +125,7 @@ class Controller
             require($rep . $vues['erreur']);
         }
         catch(Exception $e){
-            $dVueEreur[] = "erreur accueil";
+            $dVueEreur[] = "erreur accueil" . $e->getMessage();
             require($rep . $vues['erreur']);
         }
 
@@ -286,7 +287,6 @@ class Controller
 
             $username = Validation::nettoyerString($username);
             $password = Validation::nettoyerString($password);
-
             if ($mdl->connexion($username, $password)) {
                 unset($_REQUEST['id']);
                 $this->accueil();
@@ -296,11 +296,11 @@ class Controller
             }
         }
         catch (Exception $e){
-            $dVueEreur[] = "erreur se connecter";
+            $dVueEreur[] = "erreur se connecter" . $e->getMessage();
             require($rep . $vues['erreur']);
         }
         catch (Error $t){
-            $dVueEreur[] = "erreur se connecter";
+            $dVueEreur[] = "erreur se connecter" . $t->getMessage();
             require($rep . $vues['erreur']);
         }
 
@@ -325,23 +325,32 @@ class Controller
         }
     }
 
-    public function newUser(string $username, string $password) : bool{
+    public function newUser() {
         try {
             global $dVueEreur;
             global $rep, $vues; // nécessaire pour utiliser variables globales
-            $password = Validation::nettoyerString($password);
-            $username = Validation::nettoyerString($username);
+            if (isset($_REQUEST['username']))
+                $username = Validation::nettoyerString($_REQUEST['username']);
+            if (isset($_REQUEST['password']))
+                $password = Validation::nettoyerString($_REQUEST['password']);
             $hash = password_hash($password, PASSWORD_DEFAULT);
-            UserGateway::register($hash, $username);
+            UserGateway::register($username, $hash);
+            unset($_REQUEST['id']);
+            $this->accueil();
         }
         catch(Exception $e){
-            $dVueEreur[] = "erreur ajout utilisateur";
+            $dVueEreur[] = "erreur ajout utilisateur" . $e->getMessage();
+            require($rep . $vues['erreur']);
+        }
+        catch(PDOException $e1){
+            $dVueEreur[] = "erreur ajout utilisateur" . $e1->getMessage();
             require($rep . $vues['erreur']);
         }
         catch (Error $t){
-            $dVueEreur[] = "erreur ajout utilisateur";
+            $dVueEreur[] = "erreur ajout utilisateur" . $t->getMessage();
             require($rep . $vues['erreur']);
         }
+
     }
 
 }//fin class

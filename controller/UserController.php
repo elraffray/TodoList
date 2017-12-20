@@ -138,6 +138,8 @@ class UserController extends Controller
         $mdl = new ModeleUser();
 
         $mdl->deconnexion();
+        unset($_REQUEST['id']);
+        unset($id);
         parent::accueil();
     }
 

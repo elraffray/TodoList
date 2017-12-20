@@ -46,7 +46,7 @@ class TacheGateway
     }
 
 
-    public static function findAllByList(int $idListe) {
+    public static function findAllByList(int $idListe) : array {
         self::setConnection();
         try {
             self::$con->executeQuery("SELECT * FROM tache where idListe=:idListe order by dateFin, dateAjout desc", array(
@@ -58,6 +58,7 @@ class TacheGateway
             var_dump($e);
         }
 
+        $taches = array();
         try {
             foreach ($res as $row) {
                 $taches[] = new Tache($row['id'], $row['idListe'], $row['nom'], $row['description'], $row['dateAjout']);
@@ -115,7 +116,7 @@ class TacheGateway
 
 
     //=============pagination===================
-    public static function getNumberOfTache($idListe){
+    public static function getNumberOfTache($idListe) : int {
         self::setConnection();
         try {
             self::$con->executeQuery("select count(*) from tache where idListe=:idListe", array(
@@ -131,12 +132,12 @@ class TacheGateway
         }
     }
 
-    public static function findLimitByList(int $idListe, int $page, int $tachesParPage) {
+    public static function findLimitByList(int $idListe, int $page, int $tachesParPage) : array {
         self::setConnection();
         try {
             self::$con->executeQuery("SELECT * FROM tache where idListe=:idListe order by dateFin, dateAjout desc limit :page, :tachesParPage", array(
                 ':idListe' => array($idListe, PDO::PARAM_INT),
-                ':page' => array($page, PDO::PARAM_INT),
+                ':page' => array($page*$tachesParPage, PDO::PARAM_INT),
                 ':tachesParPage' => array($tachesParPage, PDO::PARAM_INT),
             ));
 
@@ -144,7 +145,7 @@ class TacheGateway
         } catch (PDOException $e) {
             var_dump($e);
         }
-
+        $taches = array();
         try {
             foreach ($res as $row) {
                 $taches[] = new Tache($row['id'], $row['idListe'], $row['nom'], $row['description'], $row['dateAjout']);

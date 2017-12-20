@@ -70,7 +70,7 @@ class ListeGateway
     }
 
 
-    public static function findById(int $id) {
+    public static function findById(int $id) : Liste {
         self::setConnection();
 
 
@@ -98,7 +98,7 @@ class ListeGateway
         }
     }
 
-    public static function getUserNameById(int $id){
+    public static function getUserNameById(int $id) : string {
         self::setConnection();
 
 
@@ -109,11 +109,13 @@ class ListeGateway
         $res = self::$con->getResults();
 
         $s = $res[0]['username'];
+        if ($s == null)
+            $s = "";
         return $s;
     }
 
 
-    public static function isPrivate(int $id) {
+    public static function isPrivate(int $id) : bool {
         $username = self::getUserNameById($id);
         if ($username != "" && $username != null)
             return true;
