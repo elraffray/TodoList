@@ -54,6 +54,10 @@ class Controller
                     $this->seConnecter();
                     break;
 
+                case "creerCompte":
+                    $this->newUser();
+                    break;
+
                 //mauvaise action
                 default:
                     $dVueEreur[] = "Erreur d'appel php";
@@ -317,6 +321,25 @@ class Controller
         }
         catch (Exception $e){
             $dVueEreur[] = "erreur connexion";
+            require($rep . $vues['erreur']);
+        }
+    }
+
+    public function newUser(string $username, string $password) : bool{
+        try {
+            global $dVueEreur;
+            global $rep, $vues; // nécessaire pour utiliser variables globales
+            $password = Validation::nettoyerString($password);
+            $username = Validation::nettoyerString($username);
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            UserGateway::register($hash, $username);
+        }
+        catch(Exception $e){
+            $dVueEreur[] = "erreur ajout utilisateur";
+            require($rep . $vues['erreur']);
+        }
+        catch (Error $t){
+            $dVueEreur[] = "erreur ajout utilisateur";
             require($rep . $vues['erreur']);
         }
     }

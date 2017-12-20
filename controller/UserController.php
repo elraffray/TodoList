@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     function __construct() {
         global $rep, $vues; // nécessaire pour utiliser variables globales
-
+        global $dVueEreur;
 
         //debut
 
@@ -68,6 +68,8 @@ class UserController extends Controller
     private function isRightUser() : bool
     {
         try {
+            global $dVueEreur;
+            global $rep, $vues; // nécessaire pour utiliser variables globales
             $idListe = $_REQUEST['idListe'];
             $idListe = Validation::nettoyerInt($idListe);
 
@@ -88,6 +90,7 @@ class UserController extends Controller
     private function ajoutListePrive()
     {
         try {
+            global $dVueEreur;
             global $rep, $vues; // nécessaire pour utiliser variables globales
 
             $nom = $_POST['nom'];
@@ -137,6 +140,8 @@ class UserController extends Controller
         $mdl->deconnexion();
         parent::accueil();
     }
+
+
 
 
 }

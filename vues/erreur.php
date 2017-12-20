@@ -3,7 +3,8 @@
 <head>
     <title>Erreur</title>
     <style> p {text-align: center;
-               color: #aaaaaa;}</style>
+               color: #aaaaaa;}
+    </style>
 </head>
 <body background="errer.jpg">
 <?php

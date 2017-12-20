@@ -35,4 +35,21 @@ class UserGateway
 
 
     }
+    public static function register(string $username, string $hash) : bool {
+        try {
+            self::setConnection();
+            $query = "INSERT INTO users VALUES (:username, :password)";
+
+            $args = array(
+                ':username' => array($username, PDO::PARAM_STR),
+                ':password' => array($hash, PDO::PARAM_STR)
+            );
+            self::$con->executeQuery($query, $args);
+        }
+        catch (PDOException $e1) {
+            var_dump($e1);
+        } catch (Exception $e2) {
+            var_dump($e2);
+        }
+    }
 }
