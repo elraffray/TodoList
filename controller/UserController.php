@@ -67,24 +67,44 @@ class UserController extends Controller
 
     private function isRightUser() : bool
     {
-        $idListe = $_REQUEST['idListe'];
-        $idListe = Validation::nettoyerInt($idListe);
+        try {
+            $idListe = $_REQUEST['idListe'];
+            $idListe = Validation::nettoyerInt($idListe);
 
-        if (ListeGateway::getUserNameById($idListe) == $_SESSION['username'])
-            return true;
-        return false;
+            if (ListeGateway::getUserNameById($idListe) == $_SESSION['username'])
+                return true;
+            return false;
+        }
+        catch(Exception $e){
+            $dVueEreur[] = "erreur completer Tache";
+            require($rep . $vues['erreur RightUser']);
+        }
+        catch (Error $t){
+            $dVueEreur[] = "erreur RightUser";
+            require($rep . $vues['erreur']);
+        }
     }
 
     private function ajoutListePrive()
     {
-        global $rep, $vues; // nécessaire pour utiliser variables globales
+        try {
+            global $rep, $vues; // nécessaire pour utiliser variables globales
 
-        $nom = $_POST['nom'];
-        $nom = Validation::nettoyerString($nom);
+            $nom = $_POST['nom'];
+            $nom = Validation::nettoyerString($nom);
 
-        ListeGateway::insert($nom, $_SESSION['username']);
+            ListeGateway::insert($nom, $_SESSION['username']);
 
-        parent::accueil();
+            parent::accueil();
+        }
+        catch(Exception $e){
+                $dVueEreur[] = "erreur ajout liste prive";
+                require($rep . $vues['erreur']);
+            }
+        catch (Error $t){
+                $dVueEreur[] = "erreur ajout liste prive";
+                require($rep . $vues['erreur']);
+            }
     }
 
     private function supprListePrive()

@@ -99,7 +99,7 @@ class Controller
                 $id = $_REQUEST['id'];
 
             if (isset($id)) {
-                $id = Validation::nettoyerInt($id);
+                $id = Validation::nettoyerInt(null);
                 $list = ListeGateway::findById($id);
                 $p = Validation::nettoyerInt($p);
                 if ($p < 1)
@@ -117,6 +117,10 @@ class Controller
 
         } catch (Error $e) {
             $dVueEreur[] = "erreur accueil ".$e->getMessage();
+            require($rep . $vues['erreur']);
+        }
+        catch(Exception $e){
+            $dVueEreur[] = "erreur accueil";
             require($rep . $vues['erreur']);
         }
 
@@ -203,7 +207,7 @@ class Controller
             require($rep . $vues['erreur']);
         }
         catch (Error $t){
-            $dVueEreur[] = "erreur ajout Tache";
+            $dVueEreur[] = "erreur suppr Liste";
             require($rep . $vues['erreur']);
         }
     }
@@ -231,7 +235,7 @@ class Controller
             require($rep . $vues['erreur']);
         }
         catch (Error $t){
-            $dVueEreur[] = "erreur ajout Tache";
+            $dVueEreur[] = "erreur suppr Tache";
             require($rep . $vues['erreur']);
         }
     }
@@ -258,7 +262,7 @@ class Controller
             require($rep . $vues['erreur']);
         }
         catch (Error $t){
-            $dVueEreur[] = "erreur ajout Tache";
+            $dVueEreur[] = "erreur completer Tache";
             require($rep . $vues['erreur']);
         }
     }
@@ -283,7 +287,7 @@ class Controller
                 unset($_REQUEST['id']);
                 $this->accueil();
             } else {
-                $dVueEreur[] = "erreur login";
+                $dVueEreur[] = "erreur mauvais mot de passe";
                 require($rep . $vues['erreur']);
             }
         }
@@ -292,7 +296,7 @@ class Controller
             require($rep . $vues['erreur']);
         }
         catch (Error $t){
-            $dVueEreur[] = "erreur ajout Tache";
+            $dVueEreur[] = "erreur se connecter";
             require($rep . $vues['erreur']);
         }
 
