@@ -233,7 +233,7 @@
                             else {
                                 $tmp = $p + 1;
                                 $suiv = "index.php?id=" . $list->getId() . "&p=" . $tmp;
-                                print "<a href=\"$suiv\" class='btn btn-default' role='button'>Prec</a>";
+                                print "<a href=\"$suiv\" class='btn btn-default' role='button'>Suiv</a>";
                             }
                             ?>
                         </span>

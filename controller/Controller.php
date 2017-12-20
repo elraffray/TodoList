@@ -81,6 +81,7 @@ class Controller
     {
 
         try {
+            global $dVueEreur;
             global $rep, $vues; // nécessaire pour utiliser variables globales
             $listsPubliques = ListeGateway::findAllPublique();
             $mdl = new ModeleUser();
@@ -114,131 +115,206 @@ class Controller
             require($rep . $vues['publique']);
 
 
-        } catch (Exception $e) {
-            var_dump($e);
+        } catch (Error $e) {
+            $dVueEreur[] = "erreur accueil ".$e->getMessage();
+            require($rep . $vues['erreur']);
         }
+
+
     }
 
 
 
     function ajoutListePublique()
     {
+        global $dVueEreur;
         global $rep, $vues; // nécessaire pour utiliser variables globales
+        try {
+            $nom = $_POST['nom'];
+            $nom = Validation::nettoyerString($nom);
 
-        $nom = $_POST['nom'];
-        $nom = Validation::nettoyerString($nom);
+            ListeGateway::insert($nom);
 
-        ListeGateway::insert($nom);
-
-        $this->accueil();
+            $this->accueil();
+        }
+        catch (Error $t){
+            $dVueEreur[] = "erreur ajout liste";
+            require($rep . $vues['erreur']);
+        }
+        catch(Exception $e){
+            $dVueEreur[] = "erreur ajout liste";
+            require($rep . $vues['erreur']);
+        }
     }
 
 
     function ajoutTache()
     {
-        global $rep, $vues; // nécessaire pour utiliser variables globales
+        try {
+            global $dVueEreur;
+            global $rep, $vues; // nécessaire pour utiliser variables globales
 
-        $nom = $_POST['nom'];
-        $nom = Validation::nettoyerString($nom);
+            $nom = $_POST['nom'];
+            $nom = Validation::nettoyerString($nom);
 
-        $desc = $_POST['desc'];
-        $desc = Validation::nettoyerString($desc);
+            $desc = $_POST['desc'];
+            $desc = Validation::nettoyerString($desc);
 
 
-        $idListe = $_POST['idListe'];
-        $idListe = Validation::nettoyerInt($idListe);
+            $idListe = $_POST['idListe'];
+            $idListe = Validation::nettoyerInt($idListe);
 
-        TacheGateway::insert($idListe, $nom, $desc);
-        $this->accueil();
+            TacheGateway::insert($idListe, $nom, $desc);
+            $this->accueil();
+        }
+        catch (Error $t){
+            $dVueEreur[] = "erreur ajout Tache";
+            require($rep . $vues['erreur']);
+        }
+        catch(Exception $e){
+            $dVueEreur[] = "erreur ajout Tache";
+            require($rep . $vues['erreur']);
+        }
     }
 
 
     function supprListe() {
-        $idListe = $_REQUEST['idListe'];
 
-        $idListe = Validation::nettoyerInt($idListe);
+        try {
+            global $dVueEreur;
+            global $rep, $vues; // nécessaire pour utiliser variables globales
+            $idListe = $_REQUEST['idListe'];
 
-        if (isset($_REQUEST['id'])) {
-            $id = $_REQUEST['id'];
-            $id = Validation::nettoyerInt($id);
+            $idListe = Validation::nettoyerInt($idListe);
 
-            if ($id == $idListe)
-                $_REQUEST['id'] = null;
+            if (isset($_REQUEST['id'])) {
+                $id = $_REQUEST['id'];
+                $id = Validation::nettoyerInt($id);
+
+                if ($id == $idListe)
+                    $_REQUEST['id'] = null;
+            }
+
+            ListeGateway::supprById($idListe);
+            $this->accueil();
         }
-
-        ListeGateway::supprById($idListe);
-        $this->accueil();
+        catch (Exception$e){
+            $dVueEreur[] = "erreur suppr Liste";
+            require($rep . $vues['erreur']);
+        }
+        catch (Error $t){
+            $dVueEreur[] = "erreur ajout Tache";
+            require($rep . $vues['erreur']);
+        }
     }
 
 
     function supprTache()
     {
+        try {
+            global $dVueEreur;
+            global $rep, $vues; // nécessaire pour utiliser variables globales
+            $idListe = $_REQUEST['idListe'];
+            $idListe = Validation::nettoyerInt($idListe);
 
-        $idListe = $_REQUEST['idListe'];
-        $idListe = Validation::nettoyerInt($idListe);
+            $idTache = $_POST['idTache'];
 
-        $idTache = $_POST['idTache'];
+            $idTache = Validation::nettoyerInt($idTache);
 
-        $idTache = Validation::nettoyerInt($idTache);
+            TacheGateway::supprByIdAndList($idListe, $idTache);
 
-        TacheGateway::supprByIdAndList($idListe, $idTache);
-
-        $_REQUEST['id'] = $idListe;
-        $this->accueil();
+            $_REQUEST['id'] = $idListe;
+            $this->accueil();
+        }
+        catch (Exception $e){
+            $dVueEreur[] = "erreur suppr Tache";
+            require($rep . $vues['erreur']);
+        }
+        catch (Error $t){
+            $dVueEreur[] = "erreur ajout Tache";
+            require($rep . $vues['erreur']);
+        }
     }
 
     function completerTache()
     {
-        $idListe = $_REQUEST['idListe'];
-        $idListe = Validation::nettoyerInt($idListe);
+        try {
+            global $dVueEreur;
+            global $rep, $vues; // nécessaire pour utiliser variables globales
+            $idListe = $_REQUEST['idListe'];
+            $idListe = Validation::nettoyerInt($idListe);
 
-        $idTache = $_POST['idTache'];
+            $idTache = $_POST['idTache'];
 
-        $idTache = Validation::nettoyerInt($idTache);
+            $idTache = Validation::nettoyerInt($idTache);
 
-        TacheGateway::CompleteByIdAndList($idListe, $idTache);
+            TacheGateway::CompleteByIdAndList($idListe, $idTache);
 
-        $_REQUEST['id'] = $idListe;
-        $this->accueil();
+            $_REQUEST['id'] = $idListe;
+            $this->accueil();
+        }
+        catch(Exception $e){
+            $dVueEreur[] = "erreur completer Tache";
+            require($rep . $vues['erreur']);
+        }
+        catch (Error $t){
+            $dVueEreur[] = "erreur ajout Tache";
+            require($rep . $vues['erreur']);
+        }
     }
 
     private function seConnecter()
     {
-        global $dVueEreur;
-        global $rep, $vues; // nécessaire pour utiliser variables globales
+        try {
+            global $dVueEreur;
+            global $rep, $vues; // nécessaire pour utiliser variables globales
 
-        $mdl = new ModeleUser();
+            $mdl = new ModeleUser();
 
-        $dVueEreur = array();
+            $dVueEreur = array();
 
-        $username = $_REQUEST['username'];
-        $password = $_REQUEST['password'];
+            $username = $_REQUEST['username'];
+            $password = $_REQUEST['password'];
 
-        $username = Validation::nettoyerString($username);
-        $password = Validation::nettoyerString($password);
+            $username = Validation::nettoyerString($username);
+            $password = Validation::nettoyerString($password);
 
-        if ($mdl->connexion($username, $password)){
-            unset($_REQUEST['id']);
-            $this->accueil();
+            if ($mdl->connexion($username, $password)) {
+                unset($_REQUEST['id']);
+                $this->accueil();
+            } else {
+                $dVueEreur[] = "erreur login";
+                require($rep . $vues['erreur']);
+            }
         }
-        else {
-            $dVueEreur[] = "erreur login";
+        catch (Exception $e){
+            $dVueEreur[] = "erreur se connecter";
             require($rep . $vues['erreur']);
-    }
+        }
+        catch (Error $t){
+            $dVueEreur[] = "erreur ajout Tache";
+            require($rep . $vues['erreur']);
+        }
 
     }
 
     private function connexion()
     {
-        global $rep, $vues; // nécessaire pour utiliser variables globales
-        global $dVueEreur;
+        try {
+            global $rep, $vues; // nécessaire pour utiliser variables globales
+            global $dVueEreur;
 
-        $dVueEreur = array();
+            $dVueEreur = array();
 
 
-        $listsPubliques = ListeGateway::findAllPublique();
+            $listsPubliques = ListeGateway::findAllPublique();
 
-        require($rep . $vues['login']);
+            require($rep . $vues['login']);
+        }
+        catch (Exception $e){
+            $dVueEreur[] = "erreur connexion";
+            require($rep . $vues['erreur']);
+        }
     }
 
 }//fin class
